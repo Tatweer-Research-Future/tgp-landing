@@ -1,16 +1,16 @@
 # 🎓 TGP2025 – Training Graduate Program Landing
 
-A modern, responsive landing page built with Next.js 15, React 19, and Tailwind CSS for the Training Graduate Program 2025 (TGP2025). The program is powered by Future Company and focuses on training final-year students and fresh graduates through hands-on projects, mentorship, and workshops.
+A modern, responsive landing page built with Next.js 15, React 19, and Tailwind CSS for the Training Graduate Program 2025 (TGP2025). The program is powered by Future & Tatweer and focuses on preparing job‑ready talent through real projects, mentorship, and workshops.
 
 ## ✨ Features
 
-- 🎨 Modern and responsive design
-- 🌗 Dark/Light theme support
-- ⚡ Built with Next.js 15 (App Router)
-- 🎭 Beautiful UI components powered by Radix UI
-- 🎯 TypeScript for type safety
-- 🎪 Smooth animations and transitions
-- 📱 Mobile-friendly interface
+- 🎨 Modern, responsive design with Montserrat font
+- 🌗 Light/Dark themes (agenda‑inspired dark palette). Toggle in navbar
+- 🧭 Corporate infographic layout: Motivation, Targets, Tracks, Phases, Partners
+- 🧩 Animated “Powered by” logos with lively hover motion
+- 🗂️ Accessible mobile sheet menu + smooth in‑page navigation
+- ⚡ Next.js 15 App Router, TypeScript, Radix UI, Tailwind v4
+- 🌀 Framer Motion micro‑interactions
 
 ## 📋 Prerequisites
 
@@ -134,11 +134,14 @@ TGP-landing/
 │   └── page.tsx           # Home page
 ├── components/            # React components
 │   ├── ui/               # Reusable UI components (shadcn/ui)
-│   ├── hero.tsx          # Hero section
-│   ├── services.tsx      # Services section
-│   ├── projects.tsx      # Projects showcase
-│   ├── contact.tsx       # Contact section
-│   └── navigation.tsx    # Navigation bar
+│   ├── hero.tsx          # Hero
+│   ├── motivation.tsx    # Why this program exists
+│   ├── targets.tsx       # Who we target & our goal
+│   ├── tracks.tsx        # Program tracks
+│   ├── phases.tsx        # Program phases timeline
+│   ├── partners.tsx      # Powered by (logos)
+│   ├── contact.tsx       # Contact
+│   └── navigation.tsx    # Navbar + dark-mode toggle + mobile sheet
 ├── hooks/                # Custom React hooks
 ├── lib/                  # Utility functions
 ├── public/              # Static assets (images, etc.)
@@ -158,6 +161,13 @@ TGP-landing/
 - **Charts:** Recharts
 - **Theme:** next-themes
 - **Animations:** tailwindcss-animate
+
+## 🧰 Theming
+
+- Typography: [Montserrat](https://fonts.google.com/specimen/Montserrat) via `next/font/google`.
+- Color tokens live in `app/globals.css` under CSS variables.
+- Dark mode uses a navy‑purple palette (derived from agenda visuals) and square background motifs in some sections. Light mode stays clean and bright.
+- Toggle theme using the Moon/Sun button in the navbar (persisted by `next-themes`).
 
 ## 🔧 Troubleshooting
 
@@ -231,10 +241,11 @@ This Next.js application can be deployed to:
 
 To customize the landing page:
 
-- **Edit content:** Modify files in the `components/` folder
-- **Change styles:** Edit `app/globals.css` or component styles (purple palette)
-- **Add images:** Place images in the `public/` folder (e.g., `Logo.png`)
-- **Update theme:** Modify the theme provider in `components/theme-provider.tsx`
+- **Edit content:** Update sections in the `components/` folder (e.g., `motivation.tsx`, `targets.tsx`).
+- **Change styles:** Tweak color variables in `app/globals.css`.
+- **Logos:** Replace `public/future-logo1.png` and `public/Tatweer_Research_Logo.png` or point to external URLs.
+- **Animations:** Framer Motion variants are co‑located in section components; adjust hover/lift values as needed.
+- **Theme:** `ThemeProvider` config is in `app/layout.tsx`.
 
 ## 📄 License
 
