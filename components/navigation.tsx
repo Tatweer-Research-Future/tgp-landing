@@ -255,7 +255,7 @@ export function Navigation() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-lg p-2 hover:bg-secondary/20 transition-colors"
+                className="hidden rounded-lg p-2 hover:bg-secondary/20 transition-colors"
                 aria-label="Toggle dark mode"
               >
                 {theme === "dark" ? (
