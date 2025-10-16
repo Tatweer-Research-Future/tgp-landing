@@ -4,6 +4,15 @@ import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useTranslations } from "@/hooks/use-translations";
 import { BookOpen, Brain, Users, User, MapPin } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const GeographicMap = dynamic(
+  () => import("@/components/geographic-map").then((mod) => mod.GeographicMap),
+  {
+    ssr: false,
+    loading: () => <p>Loading map...</p>,
+  }
+);
 
 export function Statistics() {
   const t = useTranslations();
@@ -18,18 +27,18 @@ export function Statistics() {
   ];
 
   const geographicData = [
-    { country: t("statistics.geographic.libya"), value: 890 },
-    { country: t("statistics.geographic.syria"), value: 205 },
-    { country: t("statistics.geographic.sudan"), value: 80 },
-    { country: t("statistics.geographic.egypt"), value: 30 },
-    { country: t("statistics.geographic.jordan"), value: 39 },
-    { country: t("statistics.geographic.saudi"), value: 36 },
-    { country: t("statistics.geographic.yemen"), value: 20 },
-    { country: t("statistics.geographic.palestine"), value: 33 },
-    { country: t("statistics.geographic.iraq"), value: 9 },
-    { country: t("statistics.geographic.morocco"), value: 3 },
-    { country: t("statistics.geographic.algeria"), value: 5 },
-    { country: t("statistics.geographic.tunisia"), value: 5 },
+    { country: "Libya", value: 890 },
+    { country: "Syria", value: 205 },
+    { country: "Sudan", value: 80 },
+    { country: "Egypt", value: 30 },
+    { country: "Jordan", value: 39 },
+    { country: "Saudi Arabia", value: 36 },
+    { country: "Yemen", value: 20 },
+    { country: "Palestine", value: 33 },
+    { country: "Iraq", value: 9 },
+    { country: "Morocco", value: 3 },
+    { country: "Algeria", value: 5 },
+    { country: "Tunisia", value: 5 },
   ];
 
   return (
@@ -227,27 +236,8 @@ export function Statistics() {
           <h3 className="text-2xl font-bold text-center mb-8">
             {t("statistics.geographic.title")}
           </h3>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {geographicData.map((item, index) => (
-              <motion.div
-                key={item.country}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Card className="p-4 text-center border-border bg-card hover:shadow-lg transition-all">
-                  <MapPin className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-primary mb-1">
-                    {item.value.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {item.country}
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="mt-8">
+            <GeographicMap data={geographicData} />
           </div>
         </motion.div>
       </div>

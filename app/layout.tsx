@@ -4,8 +4,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Montserrat } from "next/font/google";
-import { LanguageProvider } from '@/components/language-provider';
+import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
