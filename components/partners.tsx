@@ -24,7 +24,18 @@ export function Partners() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
+              whileHover={{
+                y: -6,
+                scale: 1.08,
+                transition: {
+                  type: "spring",
+                  stiffness: 700,
+                  damping: 18,
+                  mass: 0.4,
+                  duration: 0.15,
+                },
+              }}
               className="opacity-80 transition hover:opacity-100"
               aria-label={logo.alt}
             >
@@ -32,7 +43,7 @@ export function Partners() {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-full max-w-full object-contain"
+                  className="max-h-full max-w-full object-contain transition-transform"
                 />
               </div>
             </motion.div>
