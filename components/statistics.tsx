@@ -2,34 +2,34 @@
 
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { useTranslations } from '@/hooks/use-translations';
+import { useTranslations } from "@/hooks/use-translations";
 import { BookOpen, Brain, Users, User, MapPin } from "lucide-react";
 
 export function Statistics() {
   const t = useTranslations();
 
   const overviewStats = [
-    { label: t('statistics.overview.applied'), value: 943 },
-    { label: t('statistics.overview.selected'), value: 891 },
-    { label: t('statistics.overview.tested'), value: 170 },
-    { label: t('statistics.overview.interviewed'), value: 131 },
-    { label: t('statistics.overview.accepted'), value: 50 },
-    { label: t('statistics.overview.hired'), value: 35 },
+    { label: t("statistics.overview.applied"), value: 943 },
+    { label: t("statistics.overview.selected"), value: 891 },
+    { label: t("statistics.overview.tested"), value: 170 },
+    { label: t("statistics.overview.interviewed"), value: 131 },
+    { label: t("statistics.overview.accepted"), value: 50 },
+    { label: t("statistics.overview.hired"), value: 35 },
   ];
 
   const geographicData = [
-    { country: t('statistics.geographic.libya'), value: 890 },
-    { country: t('statistics.geographic.syria'), value: 205 },
-    { country: t('statistics.geographic.sudan'), value: 80 },
-    { country: t('statistics.geographic.egypt'), value: 30 },
-    { country: t('statistics.geographic.jordan'), value: 39 },
-    { country: t('statistics.geographic.saudi'), value: 36 },
-    { country: t('statistics.geographic.yemen'), value: 20 },
-    { country: t('statistics.geographic.palestine'), value: 33 },
-    { country: t('statistics.geographic.iraq'), value: 9 },
-    { country: t('statistics.geographic.morocco'), value: 3 },
-    { country: t('statistics.geographic.algeria'), value: 5 },
-    { country: t('statistics.geographic.tunisia'), value: 5 },
+    { country: t("statistics.geographic.libya"), value: 890 },
+    { country: t("statistics.geographic.syria"), value: 205 },
+    { country: t("statistics.geographic.sudan"), value: 80 },
+    { country: t("statistics.geographic.egypt"), value: 30 },
+    { country: t("statistics.geographic.jordan"), value: 39 },
+    { country: t("statistics.geographic.saudi"), value: 36 },
+    { country: t("statistics.geographic.yemen"), value: 20 },
+    { country: t("statistics.geographic.palestine"), value: 33 },
+    { country: t("statistics.geographic.iraq"), value: 9 },
+    { country: t("statistics.geographic.morocco"), value: 3 },
+    { country: t("statistics.geographic.algeria"), value: 5 },
+    { country: t("statistics.geographic.tunisia"), value: 5 },
   ];
 
   return (
@@ -37,7 +37,16 @@ export function Statistics() {
       id="statistics"
       className="relative overflow-hidden bg-background py-20 lg:py-32"
     >
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Light-mode soft gradients */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 dark:hidden blur-2xl"
+        aria-hidden
+        style={{
+          background:
+            "radial-gradient(38vw 38vh at 14% 22%, oklch(0.62 0.21 300 / 0.08), transparent 60%), radial-gradient(42vw 38vh at 86% 88%, oklch(0.7 0.15 190 / 0.08), transparent 60%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-2xl text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -46,10 +55,10 @@ export function Statistics() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            {t('statistics.title')}
+            {t("statistics.title")}
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
-            {t('statistics.description')}
+            {t("statistics.description")}
           </p>
         </motion.div>
 
@@ -61,7 +70,9 @@ export function Statistics() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8">Application Funnel</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            Application Funnel
+          </h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {overviewStats.map((stat, index) => (
               <motion.div
@@ -93,7 +104,9 @@ export function Statistics() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8">{t('statistics.phase2.title')}</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            {t("statistics.phase2.title")}
+          </h3>
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -105,7 +118,7 @@ export function Statistics() {
                 <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
                 <div className="text-4xl font-bold text-primary mb-2">150</div>
                 <div className="text-sm text-muted-foreground">
-                  {t('statistics.phase2.english_exam')}
+                  {t("statistics.phase2.english_exam")}
                 </div>
               </Card>
             </motion.div>
@@ -119,7 +132,7 @@ export function Statistics() {
                 <Brain className="w-12 h-12 text-primary mx-auto mb-4" />
                 <div className="text-4xl font-bold text-primary mb-2">170</div>
                 <div className="text-sm text-muted-foreground">
-                  {t('statistics.phase2.iq_exam')}
+                  {t("statistics.phase2.iq_exam")}
                 </div>
               </Card>
             </motion.div>
@@ -134,7 +147,9 @@ export function Statistics() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8">{t('statistics.phase3.title')}</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            {t("statistics.phase3.title")}
+          </h3>
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -146,7 +161,7 @@ export function Statistics() {
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <div className="text-4xl font-bold text-primary mb-2">262</div>
                 <div className="text-sm text-muted-foreground">
-                  {t('statistics.phase3.interviews')}
+                  {t("statistics.phase3.interviews")}
                 </div>
               </Card>
             </motion.div>
@@ -160,7 +175,7 @@ export function Statistics() {
                 <User className="w-12 h-12 text-primary mx-auto mb-4" />
                 <div className="text-4xl font-bold text-primary mb-2">20</div>
                 <div className="text-sm text-muted-foreground">
-                  {t('statistics.phase3.interviewers')}
+                  {t("statistics.phase3.interviewers")}
                 </div>
               </Card>
             </motion.div>
@@ -175,24 +190,26 @@ export function Statistics() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8">{t('statistics.phase4.title')}</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            {t("statistics.phase4.title")}
+          </h3>
           <div className="max-w-2xl mx-auto">
             <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all mb-6">
               <div className="text-4xl font-bold text-primary mb-2">60</div>
               <div className="text-sm text-muted-foreground mb-6">
-                {t('statistics.phase4.current_candidates')}
+                {t("statistics.phase4.current_candidates")}
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary mb-1">59</div>
                   <div className="text-xs text-muted-foreground">
-                    {t('statistics.phase4.libyan')}
+                    {t("statistics.phase4.libyan")}
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary mb-1">1</div>
                   <div className="text-xs text-muted-foreground">
-                    {t('statistics.phase4.palestinian')}
+                    {t("statistics.phase4.palestinian")}
                   </div>
                 </div>
               </div>
@@ -207,7 +224,9 @@ export function Statistics() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold text-center mb-8">{t('statistics.geographic.title')}</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            {t("statistics.geographic.title")}
+          </h3>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {geographicData.map((item, index) => (
               <motion.div

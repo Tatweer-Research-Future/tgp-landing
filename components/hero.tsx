@@ -2,9 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  useSpring,
+} from "framer-motion";
 import { useEffect, useRef } from "react";
-import { useTranslations } from '@/hooks/use-translations';
+import { useTranslations } from "@/hooks/use-translations";
 import { useTheme } from "next-themes";
 
 function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -46,7 +52,19 @@ function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
 export function Hero() {
   const t = useTranslations();
   const { theme } = useTheme();
-  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const mouseXSpring = useSpring(mouseX, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.4,
+  });
+  const mouseYSpring = useSpring(mouseY, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.4,
+  });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,32 +92,52 @@ export function Hero() {
   // No stats in the new hero
 
   return (
-    <section 
-      className="relative z-0 overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32"
+    <section
+      className="group relative z-0 overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32 dark:bg-gradient-to-br dark:from-secondary/10 dark:via-background dark:to-accent/10"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        mouseX.set((e.clientX - rect.left) / rect.width);
+        mouseY.set((e.clientY - rect.top) / rect.height);
+      }}
       style={{
-        backgroundImage: theme === "dark" 
-          ? "url('/Background.svg')" 
-          : "url('/Background-white.jpg')",
+        backgroundImage: theme === "dark" ? "url('/Background.svg')" : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark-mode subtle overlay for text readability */}
       <div
-        className="pointer-events-none absolute inset-0 hidden -z-10 dark:block"
+        className="pointer-events-none absolute inset-0 z-0 block blur-2xl dark:hidden"
+        aria-hidden
         style={{
-          background: "rgba(0, 0, 0, 0.3)",
+          background:
+            "radial-gradient(45vw 45vh at 8% 12%, oklch(0.62 0.21 300 / 0.22), transparent 60%)",
         }}
       />
-      {/* Light-mode overlay for better text readability */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 dark:hidden"
+        className="pointer-events-none absolute inset-0 z-0 block blur-2xl dark:hidden"
+        aria-hidden
         style={{
-          background: "rgba(255, 255, 255, 0.8)",
+          background:
+            "radial-gradient(50vw 50vh at 92% 92%, oklch(0.7 0.15 190 / 0.25), transparent 60%)",
         }}
       />
-      {/* Decorative gradient orbs */}
+      {/* Dark-mode gradient overlay to preserve light theme */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, #121029 0%, rgba(18,16,41,0.92) 60%, #151230 100%)",
+        }}
+      />
+      {/* Cursor-following glow blob (transform-based for better perf) */}
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-secondary/35 via-accent/25 to-transparent opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
+        style={{
+          x: useTransform(mouseXSpring, [0, 1], [-160, 160]),
+          y: useTransform(mouseYSpring, [0, 1], [-160, 160]),
+        }}
+      />
       {/* Decorative square motif only in dark mode */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden select-none grid-cols-12 gap-6 opacity-20 dark:grid">
         {Array.from({ length: 12 }).map((_, i) => (
@@ -107,7 +145,45 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Floating interactive squares that react to mouse (smoothed) */}
+      <motion.div
+        className="pointer-events-none absolute left-[10%] top-[15%] h-12 w-12 rounded-lg bg-secondary/20 backdrop-blur-sm"
+        animate={{ y: [0, -25, 0], rotate: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          x: useTransform(mouseXSpring, [0, 1], [-10, 10]),
+          y: useTransform(mouseYSpring, [0, 1], [-10, 10]),
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute right-[15%] top-[25%] h-8 w-8 rounded-md bg-accent/25 backdrop-blur-sm"
+        animate={{ y: [0, 20, 0], rotate: [0, -15, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          x: useTransform(mouseXSpring, [0, 1], [8, -8]),
+          y: useTransform(mouseYSpring, [0, 1], [8, -8]),
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute left-[20%] bottom-[20%] h-10 w-10 rounded-lg bg-primary/20 backdrop-blur-sm"
+        animate={{ y: [0, -18, 0], rotate: [0, 12, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          x: useTransform(mouseXSpring, [0, 1], [-8, 8]),
+          y: useTransform(mouseYSpring, [0, 1], [-8, 8]),
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute right-[25%] bottom-[15%] h-6 w-6 rounded-sm bg-accent/30 backdrop-blur-sm"
+        animate={{ y: [0, 15, 0], rotate: [0, -8, 0] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          x: useTransform(mouseXSpring, [0, 1], [6, -6]),
+          y: useTransform(mouseYSpring, [0, 1], [6, -6]),
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           variants={containerVariants}
@@ -120,7 +196,7 @@ export function Hero() {
           >
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-foreground">
-              {t('hero.badge')}
+              {t("hero.badge")}
             </span>
           </motion.div>
 
@@ -128,9 +204,9 @@ export function Hero() {
             variants={itemVariants}
             className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground lg:text-7xl"
           >
-            {t('hero.title')}{" "}
+            {t("hero.title")}{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              {t('hero.year')}
+              {t("hero.year")}
             </span>
           </motion.h1>
 
@@ -138,7 +214,7 @@ export function Hero() {
             variants={itemVariants}
             className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground lg:text-xl dark:text-foreground/80"
           >
-            {t('hero.description')}
+            {t("hero.description")}
           </motion.p>
 
           <motion.div
@@ -152,7 +228,7 @@ export function Hero() {
                 className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 asChild
               >
-                <a href="#motivation">{t('hero.cta')}</a>
+                <a href="#motivation">{t("hero.cta")}</a>
               </Button>
             </motion.div>
           </motion.div>
