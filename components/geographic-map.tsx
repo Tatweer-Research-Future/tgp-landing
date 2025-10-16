@@ -36,7 +36,6 @@ export function GeographicMap({ data }: GeographicMapProps) {
       center={position}
       zoom={4}
       scrollWheelZoom={false}
-      className="themed-map"
       style={{ height: "500px", width: "100%", borderRadius: "12px" }}
     >
       <TileLayer

@@ -144,6 +144,6 @@
   }
 }
 
-.themed-map .leaflet-tile-container {
+/* .themed-map .leaflet-tile-container {
   filter: brightness(0.7) hue-rotate(220deg) saturate(0.4) contrast(1.2);
-}
+} */
