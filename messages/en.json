@@ -40,7 +40,12 @@
     "goal": {
       "title": "Our Goal",
       "description": "Create a pipeline of job‑ready professionals who can drive Libya's digital transformation.",
-      "outcomes": ["Job‑ready portfolio", "Professional habits", "Mentor network", "Real impact"]
+      "outcomes": [
+        "Job‑ready portfolio",
+        "Professional habits",
+        "Mentor network",
+        "Real impact"
+      ]
     }
   },
   "tracks": {
@@ -62,6 +67,7 @@
   "phases": {
     "title": "Program Phases",
     "description": "A clear, fair pathway from application to selection.",
+    "step": "Step",
     "application": {
       "title": "Online Application",
       "description": "Candidates submit personal details and documents"
@@ -88,7 +94,7 @@
     "description": "Our impact in numbers",
     "overview": {
       "applied": "Applied",
-      "selected": "Selected", 
+      "selected": "Selected",
       "tested": "Tested",
       "interviewed": "Interviewed",
       "accepted": "Accepted",
@@ -113,7 +119,7 @@
     "geographic": {
       "title": "Geographic Distribution",
       "libya": "Libya",
-      "syria": "Syria", 
+      "syria": "Syria",
       "sudan": "Sudan",
       "egypt": "Egypt",
       "jordan": "Jordan",

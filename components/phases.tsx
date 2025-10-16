@@ -6,6 +6,7 @@ import { useTranslations } from "@/hooks/use-translations";
 import { cn } from "@/lib/utils";
 
 function PhaseCard({ p, i }: { p: any; i: number }) {
+  const t = useTranslations();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -44,7 +45,9 @@ function PhaseCard({ p, i }: { p: any; i: number }) {
             : "rounded-lg border border-accent/30 hover:shadow-md"
         )}
       >
-        <div className="text-sm font-medium text-secondary">Step {i + 1}</div>
+        <div className="text-sm font-medium text-secondary">
+          {t("phases.step")} {i + 1}
+        </div>
         <h3 className="mt-2 text-lg font-semibold text-card-foreground">
           {p.title}
         </h3>

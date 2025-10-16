@@ -97,10 +97,10 @@ export function TargetsAndGoal() {
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
                 {[
-                  "AI-curious",
-                  "Builder mindset",
-                  "Team player",
-                  "Learns fast",
+                  t("targets.target.traits.0"),
+                  t("targets.target.traits.1"),
+                  t("targets.target.traits.2"),
+                  t("targets.target.traits.3"),
                 ].map((chip) => (
                   <Chip key={chip}>{chip}</Chip>
                 ))}
@@ -124,10 +124,10 @@ export function TargetsAndGoal() {
               </p>
               <div className="mt-5 grid grid-cols-2 gap-2 text-sm">
                 {[
-                  "Job‑ready portfolio",
-                  "Professional habits",
-                  "Mentor network",
-                  "Real impact",
+                  t("targets.goal.outcomes.0"),
+                  t("targets.goal.outcomes.1"),
+                  t("targets.goal.outcomes.2"),
+                  t("targets.goal.outcomes.3"),
                 ].map((item) => (
                   <motion.div
                     key={item}
