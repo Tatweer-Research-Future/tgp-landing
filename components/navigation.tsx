@@ -5,8 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { useTranslations } from '@/hooks/use-translations';
-import { useLanguage } from '@/components/language-provider';
+import { useTranslations } from "@/hooks/use-translations";
+import { useLanguage } from "@/components/language-provider";
 import {
   Sheet,
   SheetContent,
@@ -46,16 +46,23 @@ export function Navigation() {
   };
 
   useEffect(() => {
-    const sections = ["#motivation", "#tracks", "#phases", "#statistics", "#partners", "#contact"];
+    const sections = [
+      "#motivation",
+      "#tracks",
+      "#phases",
+      "#statistics",
+      "#partners",
+      "#contact",
+    ];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      
+
       // Check if scrolled past a threshold (e.g., 50px)
       const scrolled = scrollPosition > 50;
       setIsScrolled(scrolled);
-      console.log('Scroll position:', scrollPosition, 'Is scrolled:', scrolled);
-      
+      console.log("Scroll position:", scrollPosition, "Is scrolled:", scrolled);
+
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
@@ -92,8 +99,8 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "border-b border-border/20 bg-background/80 backdrop-blur-md" 
+        isScrolled
+          ? "border-b border-border/20 bg-background/80 backdrop-blur-md"
           : "border-b-0 bg-transparent backdrop-blur-none"
       }`}
     >
@@ -125,7 +132,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.motivation')}
+              {t("navigation.motivation")}
               {activeSection === "#motivation" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -146,7 +153,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.tracks')}
+              {t("navigation.tracks")}
               {activeSection === "#tracks" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -167,7 +174,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.phases')}
+              {t("navigation.phases")}
               {activeSection === "#phases" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -188,7 +195,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.statistics')}
+              {t("navigation.statistics")}
               {activeSection === "#statistics" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -209,7 +216,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.partners')}
+              {t("navigation.partners")}
               {activeSection === "#partners" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -230,7 +237,7 @@ export function Navigation() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              {t('navigation.contact')}
+              {t("navigation.contact")}
               {activeSection === "#contact" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
@@ -268,7 +275,7 @@ export function Navigation() {
                 aria-label="Toggle language"
               >
                 <span className="text-sm font-medium text-secondary">
-                  {language === 'en' ? 'عربي' : 'EN'}
+                  {language === "en" ? "عربي" : "EN"}
                 </span>
               </motion.button>
             )}
@@ -288,7 +295,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#motivation")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.motivation')}
+                      {t("navigation.motivation")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>
@@ -297,7 +304,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#tracks")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.tracks')}
+                      {t("navigation.tracks")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>
@@ -306,7 +313,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#phases")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.phases')}
+                      {t("navigation.phases")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>
@@ -315,7 +322,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#statistics")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.statistics')}
+                      {t("navigation.statistics")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>
@@ -324,7 +331,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#partners")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.partners')}
+                      {t("navigation.partners")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>
@@ -333,7 +340,7 @@ export function Navigation() {
                       onClick={(e) => handleSmoothScroll(e, "#contact")}
                       className="text-foreground hover:text-secondary"
                     >
-                      {t('navigation.contact')}
+                      {t("navigation.contact")}
                     </a>
                   </SheetClose>
                 </nav>

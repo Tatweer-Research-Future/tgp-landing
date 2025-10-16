@@ -79,8 +79,8 @@ export function Contact() {
   const contactItems = [
     {
       label: "contact.email",
-      text: "tgp2025@future-tech.ly",
-      href: "mailto:tgp2025@future-tech.ly",
+      text: "tgp2025@tgp25.ly",
+      href: "mailto:tgp2025@tgp25.ly",
       icon: Mail,
       bg: "bg-secondary/10",
       color: "text-secondary",
@@ -107,7 +107,7 @@ export function Contact() {
     {
       label: "contact.website",
       text: "future-tech.ly/tgp2025",
-      href: "https://future-tech.ly/tgp2025",
+      href: "https://home.tgp25.ly/",
       icon: Globe,
       bg: "bg-accent/10",
       color: "text-accent",
