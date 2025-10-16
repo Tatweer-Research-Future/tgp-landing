@@ -1,6 +1,6 @@
-# 🚀 Data AI Landing Page
+# 🎓 TGP2025 – Training Graduate Program Landing
 
-A modern, responsive landing page built with Next.js 15, React 19, and Tailwind CSS. This project showcases data analytics and AI services with a beautiful, interactive UI.
+A modern, responsive landing page built with Next.js 15, React 19, and Tailwind CSS for the Training Graduate Program 2025 (TGP2025). The program is powered by Future Company and focuses on training final-year students and fresh graduates through hands-on projects, mentorship, and workshops.
 
 ## ✨ Features
 
@@ -44,7 +44,7 @@ Follow these steps to get the project running on your PC:
 2. Open a new terminal (Terminal → New Terminal) or use PowerShell
 3. Make sure you're in the project directory:
    ```bash
-   cd C:\Users\DQA\VScodeProjects\data-ai-landing
+   cd C:\Users\DQA\VScodeProjects\TGP-landing
    ```
 
 ### Step 2: Install Dependencies
@@ -127,7 +127,7 @@ Checks your code for potential errors and style issues.
 ## 🗂️ Project Structure
 
 ```
-data-ai-landing/
+TGP-landing/
 ├── app/                    # Next.js App Router pages
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
@@ -232,13 +232,13 @@ This Next.js application can be deployed to:
 To customize the landing page:
 
 - **Edit content:** Modify files in the `components/` folder
-- **Change styles:** Edit `app/globals.css` or component styles
-- **Add images:** Place images in the `public/` folder
+- **Change styles:** Edit `app/globals.css` or component styles (purple palette)
+- **Add images:** Place images in the `public/` folder (e.g., `Logo.png`)
 - **Update theme:** Modify the theme provider in `components/theme-provider.tsx`
 
 ## 📄 License
 
-This project was created with v0 by Vercel.
+This project was bootstrapped with Vercel tooling and customized for TGP2025.
 
 ## 🤝 Support
 

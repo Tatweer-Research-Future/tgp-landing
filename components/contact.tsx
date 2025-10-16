@@ -76,10 +76,10 @@ export function Contact() {
               <div>
                 <div className="font-medium text-foreground">Email</div>
                 <a
-                  href="mailto:info@future-tech.ly"
+                  href="mailto:tgp2025@future-tech.ly"
                   className="text-sm text-muted-foreground hover:text-secondary transition-colors"
                 >
-                  info@future-tech.ly
+                  tgp2025@future-tech.ly
                 </a>
               </div>
             </motion.div>
@@ -133,12 +133,12 @@ export function Contact() {
               <div>
                 <div className="font-medium text-foreground">Website</div>
                 <a
-                  href="https://future-tech.ly"
+                  href="https://future-tech.ly/tgp2025"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
-                  future-tech.ly
+                  future-tech.ly/tgp2025
                 </a>
               </div>
             </motion.div>
@@ -148,7 +148,8 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-16 border-t border-border pt-6 pb-2 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 Future Company - Data & AI Department. All rights reserved.
+            © 2025 Future Company – Training Graduate Program. All rights
+            reserved.
           </p>
         </div>
       </div>

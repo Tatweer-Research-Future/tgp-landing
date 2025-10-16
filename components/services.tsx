@@ -14,44 +14,44 @@ import { motion } from "framer-motion";
 const services = [
   {
     icon: Brain,
-    title: "AI Assistants",
+    title: "AI & Data Track",
     description:
-      "Multi-agent RAG systems and LLM-powered chatbots for intelligent data retrieval and natural language interactions.",
+      "Hands-on labs in LLMs, RAG, data wrangling, and analytics dashboards using real program datasets.",
     useSecondary: true,
   },
   {
     icon: BarChart3,
-    title: "Analytics Dashboards",
+    title: "Business Intelligence Track",
     description:
-      "Interactive visualization platforms with real-time metrics, geospatial mapping, and advanced filtering capabilities.",
+      "Dashboards, KPIs, and storytelling with data. Focus on metrics design and effective communication.",
     useSecondary: false,
   },
   {
     icon: Database,
-    title: "Data Engineering",
+    title: "Engineering Foundations",
     description:
-      "Robust data pipelines, automated reporting systems, and secure database architecture for enterprise applications.",
+      "Git, testing, CI/CD, performance and security basics for building reliable, scalable applications.",
     useSecondary: true,
   },
   {
     icon: TrendingUp,
-    title: "Predictive Analytics",
+    title: "Career Development",
     description:
-      "Machine learning models for customer segmentation, trend forecasting, and data-driven strategic insights.",
+      "Interview prep, project presentation, teamwork, and mentorship to transition from student to professional.",
     useSecondary: false,
   },
   {
     icon: Zap,
-    title: "Process Automation",
+    title: "Capstone Projects",
     description:
-      "Automated report generation, workflow optimization, and intelligent document processing to eliminate manual tasks.",
+      "Small teams build portfolio-grade projects with weekly checkpoints and feedback from mentors.",
     useSecondary: true,
   },
   {
     icon: Shield,
-    title: "Enterprise Security",
+    title: "Responsible AI & Security",
     description:
-      "Bank-grade security implementations with data encryption, access control, and compliance-ready architectures.",
+      "Best practices for privacy, model risks, access control, and auditability in AI systems.",
     useSecondary: false,
   },
 ];
@@ -91,10 +91,11 @@ export function Services() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Our Capabilities
+            Program Tracks
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
-            Comprehensive AI and data solutions designed for modern enterprises
+            A structured curriculum blending technical depth, soft skills, and
+            real projects
           </p>
         </motion.div>
 

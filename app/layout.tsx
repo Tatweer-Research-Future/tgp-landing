@@ -6,11 +6,25 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Future Company - Data & AI Department",
+  title: "TGP2025 – Training Graduate Program",
   description:
-    "Transforming data into intelligent solutions. Building practical AI and data analytics tools for the Libyan market with cutting-edge LLMs, RAG systems, and advanced analytics.",
+    "A Future Company program focused on training final-year students and fresh graduates to launch their careers in technology.",
   icons: {
-    icon: "/future-logo2.png",
+    icon: "/Logo3.png",
+  },
+  openGraph: {
+    title: "TGP2025 – Training Graduate Program",
+    description:
+      "A Future Company program focused on training final-year students and fresh graduates to launch their careers in technology.",
+    url: "https://future-tech.ly/tgp2025",
+    images: [
+      {
+        url: "/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "TGP2025 Logo",
+      },
+    ],
   },
 };
 

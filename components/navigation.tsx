@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -28,26 +27,30 @@ export function Navigation() {
   };
 
   useEffect(() => {
-    const sections = ["#services", "#projects", "#contact"];
-    
+    const sections = ["#motivation", "#tracks", "#phases", "#contact"];
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100; // Offset for header height
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
+
       // Check if we're near the bottom of the page (within 200px)
-      const isNearBottom = scrollPosition + windowHeight >= documentHeight - 200;
-      
+      const isNearBottom =
+        scrollPosition + windowHeight >= documentHeight - 200;
+
       if (isNearBottom) {
         setActiveSection("#contact");
         return;
       }
-      
+
       for (const section of sections) {
         const element = document.querySelector(section);
         if (element) {
           const { offsetTop, offsetHeight } = element as HTMLElement;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -57,7 +60,7 @@ export function Navigation() {
 
     // Set initial active section
     handleScroll();
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -77,8 +80,8 @@ export function Navigation() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Image
-              src="/future-logo3.png"
-              alt="Future Company Logo"
+              src="/Logo2.png"
+              alt="TGP2025 Logo"
               width={120}
               height={32}
               className="h-8 w-auto"
@@ -87,18 +90,18 @@ export function Navigation() {
 
           <div className="hidden items-center gap-8 md:flex">
             <motion.a
-              href="#services"
-              onClick={(e) => handleSmoothScroll(e, "#services")}
+              href="#motivation"
+              onClick={(e) => handleSmoothScroll(e, "#motivation")}
               className={`text-sm transition-colors hover:text-secondary relative ${
-                activeSection === "#services" 
-                  ? "text-secondary font-medium" 
+                activeSection === "#motivation"
+                  ? "text-secondary font-medium"
                   : "text-muted-foreground"
               }`}
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Services
-              {activeSection === "#services" && (
+              Motivation
+              {activeSection === "#motivation" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
                   layoutId="activeIndicator"
@@ -108,18 +111,39 @@ export function Navigation() {
               )}
             </motion.a>
             <motion.a
-              href="#projects"
-              onClick={(e) => handleSmoothScroll(e, "#projects")}
+              href="#tracks"
+              onClick={(e) => handleSmoothScroll(e, "#tracks")}
               className={`text-sm transition-colors hover:text-secondary relative ${
-                activeSection === "#projects" 
-                  ? "text-secondary font-medium" 
+                activeSection === "#tracks"
+                  ? "text-secondary font-medium"
                   : "text-muted-foreground"
               }`}
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              Projects
-              {activeSection === "#projects" && (
+              Tracks
+              {activeSection === "#tracks" && (
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                  layoutId="activeIndicator"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.a>
+            <motion.a
+              href="#phases"
+              onClick={(e) => handleSmoothScroll(e, "#phases")}
+              className={`text-sm transition-colors hover:text-secondary relative ${
+                activeSection === "#phases"
+                  ? "text-secondary font-medium"
+                  : "text-muted-foreground"
+              }`}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              Phases
+              {activeSection === "#phases" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
                   layoutId="activeIndicator"
@@ -132,8 +156,8 @@ export function Navigation() {
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, "#contact")}
               className={`text-sm transition-colors hover:text-secondary relative ${
-                activeSection === "#contact" 
-                  ? "text-secondary font-medium" 
+                activeSection === "#contact"
+                  ? "text-secondary font-medium"
                   : "text-muted-foreground"
               }`}
               whileHover={{ scale: 1.1 }}

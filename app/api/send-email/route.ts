@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
             <p style="white-space: pre-wrap;">${message}</p>
           </div>
           <p style="color: #6b7280; font-size: 12px;">
-            This email was sent from the Data & AI Department contact form.
+            This email was sent from the Training Graduate Program 2025 contact form.
           </p>
         </div>
       `,

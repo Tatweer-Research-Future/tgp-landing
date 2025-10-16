@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -66,18 +66,7 @@ export function Hero() {
     },
   };
 
-  const statVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 15,
-      },
-    },
-  };
+  // No stats in the new hero
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -120,7 +109,7 @@ export function Hero() {
           >
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-foreground">
-              Data & AI Department
+              Training Graduate Program 2025
             </span>
           </motion.div>
 
@@ -128,9 +117,9 @@ export function Hero() {
             variants={itemVariants}
             className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground lg:text-7xl"
           >
-            Transforming data into{" "}
+            Building Libya’s job‑ready tech talent —{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              intelligent solutions
+              elite skills, real experience
             </span>
           </motion.h1>
 
@@ -138,10 +127,10 @@ export function Hero() {
             variants={itemVariants}
             className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground lg:text-xl"
           >
-            Building practical AI and data analytics tools that turn complex
-            data into clear, actionable information for strategic
-            decision-making. Leveraging modern technologies including LLMs and
-            RAG to create secure, scalable solutions for the Libyan market.
+            A comprehensive initiative equipping Libya’s most promising young
+            talent with the capabilities to thrive in the digital economy —
+            through real projects, expert mentorship, and outcomes that match
+            industry standards.
           </motion.p>
 
           <motion.div
@@ -151,69 +140,14 @@ export function Hero() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-secondary text-secondary hover:bg-secondary/30 bg-transparent"
+                variant="default"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 asChild
               >
-                <a href="#projects">View Projects</a>
+                <a href="#motivation">How it works</a>
               </Button>
             </motion.div>
           </motion.div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          className="mx-auto mt-20 grid max-w-5xl grid-cols-2 gap-8 lg:grid-cols-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          {[
-            {
-              value: 5,
-              suffix: "+",
-              label: "Major Projects",
-              useSecondary: true,
-            },
-            {
-              value: 3,
-              suffix: "",
-              label: "AI Platforms",
-              useSecondary: false,
-            },
-            {
-              value: 100,
-              suffix: "%",
-              label: "Secure & Scalable",
-              useSecondary: true,
-            },
-            {
-              value: 24,
-              suffix: "/7",
-              label: "System Uptime",
-              useSecondary: false,
-            },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              variants={statVariants}
-              className="text-center"
-              whileHover={{ scale: 1.1, y: -5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            >
-              <div
-                className={`text-3xl font-bold lg:text-4xl ${
-                  stat.useSecondary ? "text-secondary" : "text-accent"
-                }`}
-              >
-                <Counter value={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>
