@@ -143,3 +143,9 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Soft highlight effect for gradient headings (subtle glow in dark mode) */
+.dark .text-gradient-glow {
+  text-shadow: 0 2px 20px rgba(167, 139, 250, 0.12),
+    0 4px 40px rgba(147, 112, 219, 0.08);
+}

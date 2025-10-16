@@ -15,7 +15,7 @@ import {
 
 export function Navigation() {
   const [activeSection, setActiveSection] = useState("");
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -41,7 +41,13 @@ export function Navigation() {
   };
 
   useEffect(() => {
-    const sections = ["#motivation", "#tracks", "#phases", "#contact"];
+    const sections = [
+      "#motivation",
+      "#tracks",
+      "#phases",
+      "#partners",
+      "#contact",
+    ];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100; // Offset for header height
@@ -75,6 +81,12 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const logoSrc =
+    mounted &&
+    (resolvedTheme === "dark"
+      ? "/tgp25-logo-light.svg"
+      : "/tgp25-logo-default.svg");
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -89,13 +101,16 @@ export function Navigation() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <Image
-              src="/Logo2.png"
-              alt="TGP2025 Logo"
-              width={120}
-              height={32}
-              className="h-8 w-auto"
-            />
+            {mounted && (
+              <Image
+                src={logoSrc || "/tgp25-logo-default.svg"}
+                alt="TGP2025 Logo"
+                width={140}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
+            )}
           </motion.div>
 
           <div className="hidden items-center gap-8 md:flex">
@@ -215,7 +230,7 @@ export function Navigation() {
                 className="rounded-lg p-2 hover:bg-secondary/20 transition-colors"
                 aria-label="Toggle dark mode"
               >
-                {theme === "dark" ? (
+                {resolvedTheme === "dark" ? (
                   <Sun className="h-5 w-5 text-secondary" />
                 ) : (
                   <Moon className="h-5 w-5 text-secondary" />

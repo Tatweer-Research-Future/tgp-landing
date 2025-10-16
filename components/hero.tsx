@@ -93,24 +93,24 @@ export function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div
-            variants={itemVariants}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2"
-          >
-            <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-sm font-medium text-foreground">
-              Training Graduate Program 2025
-            </span>
-          </motion.div>
-
           <motion.h1
             variants={itemVariants}
-            className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground lg:text-7xl"
+            className="mb-6 text-balance text-5xl font-extrabold tracking-tight leading-[1.05] lg:text-7xl text-gradient-glow"
           >
-            Building Libya’s job‑ready tech talent —{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              elite skills, real experience
-            </span>
+            {[
+              { w: "Training", c: "text-primary" },
+              { w: "Graduate", c: "text-secondary" },
+              { w: "Program", c: "text-accent" },
+              { w: "2025", c: "text-primary" },
+            ].map((part, i) => (
+              <span
+                key={part.w}
+                className={`${part.c} inline-block px-1 sm:px-2`}
+              >
+                {part.w}
+                {i !== 3 ? " " : ""}
+              </span>
+            ))}
           </motion.h1>
 
           <motion.p
