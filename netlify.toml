@@ -8,9 +8,7 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
-  NEXT_PUBLIC_SITE_NAME = "TGP2025 – Training Graduate Program"
-  NEXT_PUBLIC_SITE_URL = "https://tgp2025.ly"
 
+# Enable pnpm
 [build.processing]
   skip_processing = false
-
