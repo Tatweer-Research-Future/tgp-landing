@@ -55,9 +55,10 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  /* Night gradient palette approximated from agenda visuals */
+  --background: #121029; /* deep navy-purple */
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
+  --card: #151230;
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
@@ -65,14 +66,15 @@
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.48 0.18 300);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted: #191639;
+  /* Lighten muted text in dark mode for readability */
+  --muted-foreground: oklch(0.85 0.015 286.75);
   --accent: oklch(0.65 0.14 300);
   --accent-foreground: oklch(0.145 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
+  --border: #2a2750;
+  --input: #2a2750;
   --ring: var(--secondary);
   --chart-1: var(--secondary);
   --chart-2: var(--accent);

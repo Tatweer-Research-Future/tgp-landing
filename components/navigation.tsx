@@ -1,12 +1,26 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 export function Navigation() {
   const [activeSection, setActiveSection] = useState("");
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -34,10 +48,8 @@ export function Navigation() {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Check if we're near the bottom of the page (within 200px)
       const isNearBottom =
         scrollPosition + windowHeight >= documentHeight - 200;
-
       if (isNearBottom) {
         setActiveSection("#contact");
         return;
@@ -58,9 +70,7 @@ export function Navigation() {
       }
     };
 
-    // Set initial active section
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -153,6 +163,27 @@ export function Navigation() {
               )}
             </motion.a>
             <motion.a
+              href="#partners"
+              onClick={(e) => handleSmoothScroll(e, "#partners")}
+              className={`text-sm transition-colors hover:text-secondary relative ${
+                activeSection === "#partners"
+                  ? "text-secondary font-medium"
+                  : "text-muted-foreground"
+              }`}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              Partners
+              {activeSection === "#partners" && (
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                  layoutId="activeIndicator"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.a>
+            <motion.a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, "#contact")}
               className={`text-sm transition-colors hover:text-secondary relative ${
@@ -175,9 +206,81 @@ export function Navigation() {
             </motion.a>
           </div>
 
-          <button className="md:hidden">
-            <Menu className="h-6 w-6 text-foreground" />
-          </button>
+          <div className="flex items-center gap-2 md:gap-4">
+            {mounted && (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="rounded-lg p-2 hover:bg-secondary/20 transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5 text-secondary" />
+                ) : (
+                  <Moon className="h-5 w-5 text-secondary" />
+                )}
+              </motion.button>
+            )}
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="md:hidden" aria-label="Open menu">
+                  <Menu className="h-6 w-6 text-foreground" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <nav className="flex flex-col gap-6 p-6">
+                  <SheetClose asChild>
+                    <a
+                      href="#motivation"
+                      onClick={(e) => handleSmoothScroll(e, "#motivation")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      Motivation
+                    </a>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <a
+                      href="#tracks"
+                      onClick={(e) => handleSmoothScroll(e, "#tracks")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      Tracks
+                    </a>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <a
+                      href="#phases"
+                      onClick={(e) => handleSmoothScroll(e, "#phases")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      Phases
+                    </a>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <a
+                      href="#partners"
+                      onClick={(e) => handleSmoothScroll(e, "#partners")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      Partners
+                    </a>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <a
+                      href="#contact"
+                      onClick={(e) => handleSmoothScroll(e, "#contact")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      Contact
+                    </a>
+                  </SheetClose>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </motion.nav>

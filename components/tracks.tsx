@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { Brain, Code2, Shield } from "lucide-react";
 
 const tracks = [
   {
@@ -9,18 +10,21 @@ const tracks = [
     description:
       "From data wrangling to applied machine learning and analytics storytelling.",
     accent: "secondary",
+    icon: Brain,
   },
   {
     title: "Software & App Development",
     description:
       "Modern web and app engineering fundamentals, tooling, testing, and delivery.",
     accent: "accent",
+    icon: Code2,
   },
   {
     title: "Cybersecurity Networking & Telecommunications",
     description:
       "Foundations of secure systems, networks, and resilient digital infrastructure.",
     accent: "secondary",
+    icon: Shield,
   },
 ];
 
@@ -49,9 +53,9 @@ export function Tracks() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Program Tracks 🧭
+            Program Tracks
           </h2>
-          <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
+          <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
             Choose a focus area while building shared professional foundations.
           </p>
         </motion.div>
@@ -64,11 +68,23 @@ export function Tracks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
+              whileHover={{ y: -8 }}
             >
-              <Card className="h-full border-border bg-card p-8">
-                <h3 className="mb-3 text-xl font-semibold text-card-foreground">
-                  {t.title}
-                </h3>
+              <Card className="group h-full border-border bg-card p-8 transition-colors hover:border-secondary/60 hover:shadow-lg">
+                <div className="mb-4 flex items-center gap-3">
+                  <div
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-lg ${
+                      t.accent === "secondary"
+                        ? "bg-secondary/10 text-secondary"
+                        : "bg-accent/10 text-accent"
+                    }`}
+                  >
+                    <t.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-card-foreground">
+                    {t.title}
+                  </h3>
+                </div>
                 <p className="text-muted-foreground">{t.description}</p>
               </Card>
             </motion.div>

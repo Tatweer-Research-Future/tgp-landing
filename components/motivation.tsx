@@ -21,31 +21,52 @@ export function Motivation() {
       />
       <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
         <motion.div
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-5xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-6 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Why This Program Exists ✨
+            Why This Program Exists
           </h2>
-          <div className="space-y-6 text-left text-lg leading-relaxed text-muted-foreground lg:text-xl">
-            <p>
-              The motivation: smart graduates were struggling to get their first
-              real‑world experience. Great companies were searching for
-              job‑ready talent to help them grow.
-            </p>
-            <p>
-              We saw a clear gap and knew we could build the bridge to connect
-              them. This program aligns expectations on both sides—so graduates
-              gain practical skills and employers gain confident contributors.
-            </p>
-            <p>
-              It is a comprehensive initiative designed to equip Libya’s most
-              promising young talent with elite skills and real project
-              experience—so they can thrive in the digital economy from day one.
-            </p>
+          <div className="grid gap-6 text-left lg:grid-cols-3">
+            <motion.div
+              className="rounded-xl border border-border bg-card p-6"
+              whileHover={{ y: -6 }}
+            >
+              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
+                The Motivation
+              </h3>
+              <p className="text-muted-foreground">
+                Smart graduates were struggling to get their first real‑world
+                experience.
+              </p>
+            </motion.div>
+            <motion.div
+              className="rounded-xl border border-border bg-card p-6"
+              whileHover={{ y: -6 }}
+            >
+              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
+                The Market
+              </h3>
+              <p className="text-muted-foreground">
+                Great companies were searching for job‑ready talent to help them
+                grow.
+              </p>
+            </motion.div>
+            <motion.div
+              className="rounded-xl border border-border bg-card p-6"
+              whileHover={{ y: -6 }}
+            >
+              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
+                The Bridge
+              </h3>
+              <p className="text-muted-foreground">
+                We connect both sides with elite skills, real projects, and
+                mentorship that turns potential into performance.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

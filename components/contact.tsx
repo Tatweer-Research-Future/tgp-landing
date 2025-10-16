@@ -46,15 +46,12 @@ export function Contact() {
           }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Let's build something{" "}
-            <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-              extraordinary
-            </span>
+            Get in touch about TGP
           </h2>
           <p className="mb-12 text-pretty text-lg leading-relaxed text-muted-foreground">
-            Ready to transform your data into actionable insights? Our team
-            specializes in creating custom AI and analytics solutions tailored
-            to your business needs.
+            Questions about applications, phases, or partnerships? Reach us and
+            we’ll help you join, support, or hire from the Training Graduate
+            Program.
           </p>
 
           <motion.div

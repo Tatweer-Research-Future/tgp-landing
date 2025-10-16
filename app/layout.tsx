@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "TGP2025 – Training Graduate Program",
@@ -36,12 +39,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
+        className={`${montserrat.variable} ${GeistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        {children}
-        <Toaster position="top-right" richColors />
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+          <Toaster position="top-right" richColors />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

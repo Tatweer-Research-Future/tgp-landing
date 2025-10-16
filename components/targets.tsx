@@ -5,8 +5,17 @@ import { motion } from "framer-motion";
 
 export function TargetsAndGoal() {
   return (
-    <section id="targets" className="bg-muted py-20 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section
+      id="targets"
+      className="relative overflow-hidden bg-muted py-20 lg:py-32"
+    >
+      {/* subtle square background accents (dark mode only) */}
+      <div className="pointer-events-none absolute -bottom-6 left-0 right-0 hidden select-none grid-cols-12 gap-6 opacity-10 dark:grid">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className="h-6 bg-[rgba(42,39,80,0.5)]" />
+        ))}
+      </div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +27,7 @@ export function TargetsAndGoal() {
             Who We Serve
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
-            Clear criteria and outcomes keep the program focused and effective.
+            A tight community of motivated learners and ambitious organizations.
           </p>
         </motion.div>
 
@@ -28,15 +37,31 @@ export function TargetsAndGoal() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
+            whileHover={{ y: -6 }}
           >
-            <Card className="h-full border-border bg-card p-8">
+            <Card className="group h-full border-border bg-card p-8 transition-colors hover:border-secondary/60 hover:shadow-lg">
               <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
                 Who We Target
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground dark:text-foreground/80">
                 Ambitious students and graduates (born 1999+) in fields
                 intersecting with technology, data, and innovation.
               </p>
+              <div className="mt-5 flex flex-wrap gap-2 text-sm">
+                {[
+                  "AI-curious",
+                  "Builder mindset",
+                  "Team player",
+                  "Learns fast",
+                ].map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-full bg-secondary/10 px-3 py-1 text-secondary transition-transform group-hover:scale-[1.03]"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
             </Card>
           </motion.div>
 
@@ -45,15 +70,32 @@ export function TargetsAndGoal() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -6 }}
           >
-            <Card className="h-full border-border bg-card p-8">
+            <Card className="group h-full border-border bg-card p-8 transition-colors hover:border-accent/60 hover:shadow-lg">
               <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
                 Our Goal
               </h3>
-              <p className="text-muted-foreground">
-                To create a pipeline of job‑ready professionals who can drive
+              <p className="text-muted-foreground dark:text-foreground/80">
+                Create a pipeline of job‑ready professionals who can drive
                 Libya’s digital transformation.
               </p>
+              <div className="mt-5 grid grid-cols-2 gap-2 text-sm">
+                {[
+                  "Job‑ready portfolio",
+                  "Professional habits",
+                  "Mentor network",
+                  "Real impact",
+                ].map((item) => (
+                  <motion.div
+                    key={item}
+                    className="rounded-lg border border-border/70 bg-background px-3 py-2"
+                    whileHover={{ scale: 1.03 }}
+                  >
+                    {item}
+                  </motion.div>
+                ))}
+              </div>
             </Card>
           </motion.div>
         </div>

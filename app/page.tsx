@@ -5,6 +5,7 @@ import { Motivation } from "@/components/motivation";
 import { TargetsAndGoal } from "@/components/targets";
 import { Tracks } from "@/components/tracks";
 import { Phases } from "@/components/phases";
+import { Partners } from "@/components/partners";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <TargetsAndGoal />
       <Tracks />
       <Phases />
+      <Partners />
       <Contact />
     </main>
   );

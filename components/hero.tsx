@@ -69,32 +69,22 @@ export function Hero() {
   // No stats in the new hero
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32">
+    <section className="relative z-0 overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32">
+      {/* Dark-mode gradient overlay to preserve light theme */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden -z-10 dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, #121029 0%, rgba(18,16,41,0.92) 60%, #151230 100%)",
+        }}
+      />
       {/* Decorative gradient orbs */}
-      <motion.div
-        className="absolute top-0 right-0 h-96 w-96 rounded-full bg-secondary/20 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-accent/20 blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Decorative square motif only in dark mode */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden select-none grid-cols-12 gap-6 opacity-20 dark:grid">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className="h-8 bg-[rgba(42,39,80,0.6)]" />
+        ))}
+      </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -125,7 +115,7 @@ export function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground lg:text-xl"
+            className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground lg:text-xl dark:text-foreground/80"
           >
             A comprehensive initiative equipping Libya’s most promising young
             talent with the capabilities to thrive in the digital economy —
