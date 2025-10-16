@@ -106,11 +106,7 @@ export function Navigation() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <motion.div
-            className="flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
+          <div className="flex items-center gap-2">
             <Image
               src={theme === "dark" ? "/logo-light.svg" : "/Logo2.png"}
               alt="TGP2025 Logo"
@@ -118,7 +114,7 @@ export function Navigation() {
               height={32}
               className="h-8 w-auto"
             />
-          </motion.div>
+          </div>
 
           <div className="hidden items-center gap-8 md:flex">
             <motion.a

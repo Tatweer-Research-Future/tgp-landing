@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "TGP 25",
+    "badge": "TGP2025",
     "title": "Training Graduate Program",
     "year": "2025",
     "description": "Helping Libya's top young talent build real skills with hands-on projects and expert support.",
@@ -80,9 +80,9 @@
       "title": "Interview",
       "description": "Shortlisted candidates attend interviews"
     },
-    "presentation": {
-      "title": "Presentation",
-      "description": "Candidates deliver presentations"
+    "training": {
+      "title": "Training",
+      "description": "Candidates participate in a comprehensive training program."
     },
     "selection": {
       "title": "Selection for Job",
@@ -93,6 +93,7 @@
     "title": "TGP 2025 Statistics",
     "description": "Our impact in numbers",
     "overview": {
+      "title": "Application Funnel",
       "applied": "Applied",
       "selected": "Selected",
       "tested": "Tested",
@@ -111,7 +112,7 @@
       "interviewers": "Total Interviewers"
     },
     "phase4": {
-      "title": "Phase 4: Presentation",
+      "title": "Phase 4: Training Phase",
       "current_candidates": "Current Candidates",
       "libyan": "Libyan",
       "palestinian": "Palestinian"

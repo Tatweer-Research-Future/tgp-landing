@@ -76,8 +76,8 @@ export function Phases() {
       body: t("phases.interview.description"),
     },
     {
-      title: t("phases.presentation.title"),
-      body: t("phases.presentation.description"),
+      title: t("phases.training.title"),
+      body: t("phases.training.description"),
     },
     {
       title: t("phases.selection.title"),
