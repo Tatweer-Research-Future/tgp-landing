@@ -110,8 +110,8 @@ export function Navigation() {
             <Image
               src={theme === "dark" ? "/logo-light.svg" : "/Logo2.png"}
               alt="TGP2025 Logo"
-              width={120}
-              height={32}
+              width={240}
+              height={64}
               className="h-8 w-auto"
             />
           </div>
