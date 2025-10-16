@@ -1,23 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from '@/hooks/use-translations';
+import { useTheme } from "next-themes";
 
 export function Partners() {
+  const t = useTranslations();
+  const { theme } = useTheme();
+  
   return (
     <section id="partners" className="bg-background py-20 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Powered by
+            {t('partners.title')}
           </h2>
           <p className="mt-3 text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80 lg:text-xl">
-            Leading organizations supporting the Training Graduate Program
+            {t('partners.description')}
           </p>
         </div>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-12 lg:gap-16">
           {[
-            { src: "/future-logo1.png", alt: "Future" },
-            { src: "/Tatweer_Research_Logo.png", alt: "Tatweer" },
+            { 
+              src: theme === "dark" ? "/future-logo-white.png" : "/future-logo1.png", 
+              alt: "Future" 
+            },
+            { 
+              src: theme === "dark" ? "/Tatweer_Research_Logo_white.png" : "/Tatweer_Research_Logo.png", 
+              alt: "Tatweer" 
+            },
           ].map((logo, i) => (
             <motion.div
               key={logo.alt}

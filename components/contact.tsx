@@ -2,8 +2,11 @@
 
 import { Mail, MapPin, Phone, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslations } from '@/hooks/use-translations';
 
 export function Contact() {
+  const t = useTranslations();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,12 +49,10 @@ export function Contact() {
           }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Get in touch about TGP
+            {t('contact.title')}
           </h2>
           <p className="mb-12 text-pretty text-lg leading-relaxed text-muted-foreground">
-            Questions about applications, phases, or partnerships? Reach us and
-            we’ll help you join, support, or hire from the Training Graduate
-            Program.
+            {t('contact.description')}
           </p>
 
           <motion.div
@@ -71,7 +72,7 @@ export function Contact() {
                 <Mail className="h-6 w-6 text-secondary" />
               </div>
               <div>
-                <div className="font-medium text-foreground">Email</div>
+                <div className="font-medium text-foreground">{t('contact.email')}</div>
                 <a
                   href="mailto:tgp2025@future-tech.ly"
                   className="text-sm text-muted-foreground hover:text-secondary transition-colors"
@@ -91,7 +92,7 @@ export function Contact() {
                 <Phone className="h-6 w-6 text-accent" />
               </div>
               <div>
-                <div className="font-medium text-foreground">Phone</div>
+                <div className="font-medium text-foreground">{t('contact.phone')}</div>
                 <a
                   href="tel:+218930472576"
                   className="text-sm text-muted-foreground hover:text-accent transition-colors"
@@ -111,7 +112,7 @@ export function Contact() {
                 <MapPin className="h-6 w-6 text-secondary" />
               </div>
               <div>
-                <div className="font-medium text-foreground">Location</div>
+                <div className="font-medium text-foreground">{t('contact.location')}</div>
                 <div className="text-sm text-muted-foreground">
                   Alfiwhat, Benghazi, Libya
                 </div>
@@ -128,7 +129,7 @@ export function Contact() {
                 <Globe className="h-6 w-6 text-accent" />
               </div>
               <div>
-                <div className="font-medium text-foreground">Website</div>
+                <div className="font-medium text-foreground">{t('contact.website')}</div>
                 <a
                   href="https://future-tech.ly/tgp2025"
                   target="_blank"
@@ -145,8 +146,7 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-16 border-t border-border pt-6 pb-2 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 Future Company – Training Graduate Program. All rights
-            reserved.
+            {t('contact.footer')}
           </p>
         </div>
       </div>

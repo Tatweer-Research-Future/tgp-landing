@@ -1,0 +1,142 @@
+{
+  "navigation": {
+    "motivation": "Motivation",
+    "tracks": "Tracks",
+    "phases": "Phases",
+    "statistics": "Statistics",
+    "partners": "Partners",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "TGP 25",
+    "title": "Training Graduate Program",
+    "year": "2025",
+    "description": "Helping Libya's top young talent build real skills with hands-on projects and expert support.",
+    "cta": "How it works"
+  },
+  "motivation": {
+    "title": "Why This Program Exists",
+    "motivation": {
+      "title": "The Motivation",
+      "description": "Smart graduates were struggling to get their first real‑world experience."
+    },
+    "market": {
+      "title": "The Market",
+      "description": "Great companies were searching for job‑ready talent to help them grow."
+    },
+    "bridge": {
+      "title": "The Bridge",
+      "description": "We connect both sides with elite skills, real projects, and mentorship that turns potential into performance."
+    }
+  },
+  "targets": {
+    "title": "Who We Serve",
+    "description": "A tight community of motivated learners and ambitious organizations.",
+    "target": {
+      "title": "Who We Target",
+      "description": "Ambitious students and graduates (born 1999+) in fields intersecting with technology, data, and innovation.",
+      "traits": ["AI-curious", "Builder mindset", "Team player", "Learns fast"]
+    },
+    "goal": {
+      "title": "Our Goal",
+      "description": "Create a pipeline of job‑ready professionals who can drive Libya's digital transformation.",
+      "outcomes": ["Job‑ready portfolio", "Professional habits", "Mentor network", "Real impact"]
+    }
+  },
+  "tracks": {
+    "title": "Program Tracks",
+    "description": "Choose a focus area while building shared professional foundations.",
+    "ai": {
+      "title": "AI & Data Analysis",
+      "description": "From data wrangling to applied machine learning and analytics storytelling."
+    },
+    "development": {
+      "title": "Software & App Development",
+      "description": "Modern web and app engineering fundamentals, tooling, testing, and delivery."
+    },
+    "cybersecurity": {
+      "title": "Cybersecurity Networking & Telecommunications",
+      "description": "Foundations of secure systems, networks, and resilient digital infrastructure."
+    }
+  },
+  "phases": {
+    "title": "Program Phases",
+    "description": "A clear, fair pathway from application to selection.",
+    "application": {
+      "title": "Online Application",
+      "description": "Candidates submit personal details and documents"
+    },
+    "examination": {
+      "title": "Examination (IQ & English)",
+      "description": "Applicants complete standardized tests"
+    },
+    "interview": {
+      "title": "Interview",
+      "description": "Shortlisted candidates attend interviews"
+    },
+    "presentation": {
+      "title": "Presentation",
+      "description": "Candidates deliver presentations"
+    },
+    "selection": {
+      "title": "Selection for Job",
+      "description": "Final evaluation and job offers"
+    }
+  },
+  "statistics": {
+    "title": "TGP 2025 Statistics",
+    "description": "Our impact in numbers",
+    "overview": {
+      "applied": "Applied",
+      "selected": "Selected", 
+      "tested": "Tested",
+      "interviewed": "Interviewed",
+      "accepted": "Accepted",
+      "hired": "Hired"
+    },
+    "phase2": {
+      "title": "Phase 2: Examinations",
+      "english_exam": "Had English Exam",
+      "iq_exam": "Had IQ Exam"
+    },
+    "phase3": {
+      "title": "Phase 3: Interviews",
+      "interviews": "Technical & HR Interviews",
+      "interviewers": "Total Interviewers"
+    },
+    "phase4": {
+      "title": "Phase 4: Presentation",
+      "current_candidates": "Current Candidates",
+      "libyan": "Libyan",
+      "palestinian": "Palestinian"
+    },
+    "geographic": {
+      "title": "Geographic Distribution",
+      "libya": "Libya",
+      "syria": "Syria", 
+      "sudan": "Sudan",
+      "egypt": "Egypt",
+      "jordan": "Jordan",
+      "saudi": "Saudi Arabia",
+      "yemen": "Yemen",
+      "palestine": "Palestine",
+      "iraq": "Iraq",
+      "morocco": "Morocco",
+      "algeria": "Algeria",
+      "tunisia": "Tunisia"
+    }
+  },
+  "partners": {
+    "title": "Powered by",
+    "description": "Leading organizations supporting the Training Graduate Program"
+  },
+  "contact": {
+    "title": "Get in touch about TGP",
+    "description": "Questions about applications, phases, or partnerships? Reach us and we'll help you join, support, or hire from the Training Graduate Program.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "website": "Website",
+    "footer": "© 2025 Future Company – Training Graduate Program. All rights reserved."
+  }
+}

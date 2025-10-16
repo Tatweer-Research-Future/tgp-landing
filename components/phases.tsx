@@ -2,19 +2,33 @@
 
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-
-const phases = [
-  {
-    title: "Online Application",
-    body: "Submit personal details and documents",
-  },
-  { title: "Examination", body: "Standardized IQ & English tests" },
-  { title: "Interview", body: "Shortlisted candidates attend interviews" },
-  { title: "Training", body: "Intensive hands‑on training and real projects" },
-  { title: "Hired", body: "Final evaluation and job offers" },
-];
+import { useTranslations } from '@/hooks/use-translations';
 
 export function Phases() {
+  const t = useTranslations();
+  
+  const phases = [
+    {
+      title: t('phases.application.title'),
+      body: t('phases.application.description'),
+    },
+    { 
+      title: t('phases.examination.title'), 
+      body: t('phases.examination.description') 
+    },
+    { 
+      title: t('phases.interview.title'), 
+      body: t('phases.interview.description') 
+    },
+    { 
+      title: t('phases.presentation.title'), 
+      body: t('phases.presentation.description') 
+    },
+    { 
+      title: t('phases.selection.title'), 
+      body: t('phases.selection.description') 
+    },
+  ];
   return (
     <section
       id="phases"
@@ -35,10 +49,10 @@ export function Phases() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Program Phases
+            {t('phases.title')}
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
-            A clear, fair pathway from application to selection.
+            {t('phases.description')}
           </p>
         </motion.div>
 

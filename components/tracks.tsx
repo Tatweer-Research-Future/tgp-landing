@@ -3,32 +3,31 @@
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Brain, Code2, Shield } from "lucide-react";
-
-const tracks = [
-  {
-    title: "AI & Data Analysis",
-    description:
-      "From data wrangling to applied machine learning and analytics storytelling.",
-    accent: "secondary",
-    icon: Brain,
-  },
-  {
-    title: "Software & App Development",
-    description:
-      "Modern web and app engineering fundamentals, tooling, testing, and delivery.",
-    accent: "accent",
-    icon: Code2,
-  },
-  {
-    title: "Cybersecurity Networking & Telecommunications",
-    description:
-      "Foundations of secure systems, networks, and resilient digital infrastructure.",
-    accent: "secondary",
-    icon: Shield,
-  },
-];
+import { useTranslations } from '@/hooks/use-translations';
 
 export function Tracks() {
+  const t = useTranslations();
+  
+  const tracks = [
+    {
+      title: t('tracks.ai.title'),
+      description: t('tracks.ai.description'),
+      accent: "secondary",
+      icon: Brain,
+    },
+    {
+      title: t('tracks.development.title'),
+      description: t('tracks.development.description'),
+      accent: "accent",
+      icon: Code2,
+    },
+    {
+      title: t('tracks.cybersecurity.title'),
+      description: t('tracks.cybersecurity.description'),
+      accent: "secondary",
+      icon: Shield,
+    },
+  ];
   return (
     <section
       id="tracks"
@@ -53,10 +52,10 @@ export function Tracks() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Program Tracks
+            {t('tracks.title')}
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
-            Choose a focus area while building shared professional foundations.
+            {t('tracks.description')}
           </p>
         </motion.div>
 

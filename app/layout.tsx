@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Montserrat } from "next/font/google";
+import { LanguageProvider } from '@/components/language-provider';
 import "./globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
@@ -42,11 +43,13 @@ export default function RootLayout({
         className={`${montserrat.variable} ${GeistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-          <Toaster position="top-right" richColors />
-          <Analytics />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            {children}
+            <Toaster position="top-right" richColors />
+            <Analytics />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

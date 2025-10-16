@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from '@/hooks/use-translations';
 
 export function Motivation() {
+  const t = useTranslations();
+  
   return (
     <section
       id="motivation"
@@ -28,7 +31,7 @@ export function Motivation() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-6 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Why This Program Exists
+            {t('motivation.title')}
           </h2>
           <div className="grid gap-6 text-left lg:grid-cols-3">
             <motion.div
@@ -36,11 +39,10 @@ export function Motivation() {
               whileHover={{ y: -6 }}
             >
               <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                The Motivation
+                {t('motivation.motivation.title')}
               </h3>
               <p className="text-muted-foreground">
-                Smart graduates were struggling to get their first real‑world
-                experience.
+                {t('motivation.motivation.description')}
               </p>
             </motion.div>
             <motion.div
@@ -48,11 +50,10 @@ export function Motivation() {
               whileHover={{ y: -6 }}
             >
               <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                The Market
+                {t('motivation.market.title')}
               </h3>
               <p className="text-muted-foreground">
-                Great companies were searching for job‑ready talent to help them
-                grow.
+                {t('motivation.market.description')}
               </p>
             </motion.div>
             <motion.div
@@ -60,11 +61,10 @@ export function Motivation() {
               whileHover={{ y: -6 }}
             >
               <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                The Bridge
+                {t('motivation.bridge.title')}
               </h3>
               <p className="text-muted-foreground">
-                We connect both sides with elite skills, real projects, and
-                mentorship that turns potential into performance.
+                {t('motivation.bridge.description')}
               </p>
             </motion.div>
           </div>

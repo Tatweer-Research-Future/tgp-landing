@@ -2,8 +2,11 @@
 
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { useTranslations } from '@/hooks/use-translations';
 
 export function TargetsAndGoal() {
+  const t = useTranslations();
+  
   return (
     <section
       id="targets"
@@ -24,10 +27,10 @@ export function TargetsAndGoal() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            Who We Serve
+            {t('targets.title')}
           </h2>
           <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
-            A tight community of motivated learners and ambitious organizations.
+            {t('targets.description')}
           </p>
         </motion.div>
 
@@ -41,19 +44,13 @@ export function TargetsAndGoal() {
           >
             <Card className="group h-full border-border bg-card p-8 transition-colors hover:border-secondary/60 hover:shadow-lg">
               <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
-                Who We Target
+                {t('targets.target.title')}
               </h3>
               <p className="text-muted-foreground dark:text-foreground/80">
-                Ambitious students and graduates (born 1999+) in fields
-                intersecting with technology, data, and innovation.
+                {t('targets.target.description')}
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
-                {[
-                  "AI-curious",
-                  "Builder mindset",
-                  "Team player",
-                  "Learns fast",
-                ].map((chip) => (
+                {['AI-curious', 'Builder mindset', 'Team player', 'Learns fast'].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full bg-secondary/10 px-3 py-1 text-secondary transition-transform group-hover:scale-[1.03]"
@@ -74,19 +71,13 @@ export function TargetsAndGoal() {
           >
             <Card className="group h-full border-border bg-card p-8 transition-colors hover:border-accent/60 hover:shadow-lg">
               <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
-                Our Goal
+                {t('targets.goal.title')}
               </h3>
               <p className="text-muted-foreground dark:text-foreground/80">
-                Create a pipeline of job‑ready professionals who can drive
-                Libya’s digital transformation.
+                {t('targets.goal.description')}
               </p>
               <div className="mt-5 grid grid-cols-2 gap-2 text-sm">
-                {[
-                  "Job‑ready portfolio",
-                  "Professional habits",
-                  "Mentor network",
-                  "Real impact",
-                ].map((item) => (
+                {['Job‑ready portfolio', 'Professional habits', 'Mentor network', 'Real impact'].map((item) => (
                   <motion.div
                     key={item}
                     className="rounded-lg border border-border/70 bg-background px-3 py-2"

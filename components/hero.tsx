@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { useTranslations } from '@/hooks/use-translations';
+import { useTheme } from "next-themes";
 
 function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
   const count = useMotionValue(0);
@@ -42,6 +44,9 @@ function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
 }
 
 export function Hero() {
+  const t = useTranslations();
+  const { theme } = useTheme();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,13 +74,29 @@ export function Hero() {
   // No stats in the new hero
 
   return (
-    <section className="relative z-0 overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32">
-      {/* Dark-mode gradient overlay to preserve light theme */}
+    <section 
+      className="relative z-0 overflow-hidden bg-gradient-to-br from-secondary/10 via-background to-accent/10 pt-32 pb-20 lg:pt-40 lg:pb-32"
+      style={{
+        backgroundImage: theme === "dark" 
+          ? "url('/Background.svg')" 
+          : "url('/Background-white.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
+      {/* Dark-mode subtle overlay for text readability */}
       <div
         className="pointer-events-none absolute inset-0 hidden -z-10 dark:block"
         style={{
-          backgroundImage:
-            "linear-gradient(to bottom, #121029 0%, rgba(18,16,41,0.92) 60%, #151230 100%)",
+          background: "rgba(0, 0, 0, 0.3)",
+        }}
+      />
+      {/* Light-mode overlay for better text readability */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 dark:hidden"
+        style={{
+          background: "rgba(255, 255, 255, 0.8)",
         }}
       />
       {/* Decorative gradient orbs */}
@@ -99,7 +120,7 @@ export function Hero() {
           >
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-foreground">
-              Training Graduate Program 2025
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -107,9 +128,9 @@ export function Hero() {
             variants={itemVariants}
             className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground lg:text-7xl"
           >
-            Building Libya’s job‑ready tech talent —{" "}
+            {t('hero.title')}{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              elite skills, real experience
+              {t('hero.year')}
             </span>
           </motion.h1>
 
@@ -117,10 +138,7 @@ export function Hero() {
             variants={itemVariants}
             className="mb-10 text-pretty text-lg leading-relaxed text-muted-foreground lg:text-xl dark:text-foreground/80"
           >
-            A comprehensive initiative equipping Libya’s most promising young
-            talent with the capabilities to thrive in the digital economy —
-            through real projects, expert mentorship, and outcomes that match
-            industry standards.
+            {t('hero.description')}
           </motion.p>
 
           <motion.div
@@ -134,7 +152,7 @@ export function Hero() {
                 className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 asChild
               >
-                <a href="#motivation">How it works</a>
+                <a href="#motivation">{t('hero.cta')}</a>
               </Button>
             </motion.div>
           </motion.div>
