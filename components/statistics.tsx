@@ -1,245 +1,102 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { BorderBeam } from "@/src/components/lightswind/border-beam";
+import { CountUp } from "@/src/components/lightswind/count-up";
+import { ScrollReveal } from "@/src/components/lightswind/scroll-reveal";
 import { useTranslations } from "@/hooks/use-translations";
 import { BookOpen, Brain, Users, User, MapPin } from "lucide-react";
 import dynamic from "next/dynamic";
 
-const GeographicMap = dynamic(
-  () => import("@/components/geographic-map").then((mod) => mod.GeographicMap),
+// Dynamically import the map component with SSR turned off.
+const DynamicGeographicMap = dynamic(
+  () => import("./geographic-map").then((mod) => mod.GeographicMap),
   {
-    ssr: false,
-    loading: () => <p>Loading map...</p>,
+    ssr: false, // This is crucial
+    loading: () => <div style={{ height: "500px", background: "#333" }} />, // Optional: a placeholder while the map loads
   }
 );
 
 export function Statistics() {
   const t = useTranslations();
-
-  const overviewStats = [
-    { label: t("statistics.overview.applied"), value: 943 },
-    { label: t("statistics.overview.selected"), value: 891 },
-    { label: t("statistics.overview.tested"), value: 170 },
-    { label: t("statistics.overview.interviewed"), value: 131 },
-    { label: t("statistics.overview.accepted"), value: 50 },
-    { label: t("statistics.overview.hired"), value: 35 },
+  const stats = [
+    {
+      label: t("statistics.overview.applied"),
+      value: 943,
+      colorFrom: "#884aff",
+      colorTo: "#41b8ff",
+    },
+    {
+      label: t("statistics.overview.interviewed"),
+      value: 131,
+      colorFrom: "#2dd4bf",
+      colorTo: "#38bdf8",
+    },
+    {
+      label: t("statistics.overview.accepted"),
+      value: 50,
+      colorFrom: "#84fab0",
+      colorTo: "#8fd3f4",
+    },
   ];
-
-  const geographicData = [
-    { country: "Libya", value: 890 },
-    { country: "Syria", value: 205 },
-    { country: "Sudan", value: 80 },
-    { country: "Egypt", value: 30 },
-    { country: "Jordan", value: 39 },
-    { country: "Saudi Arabia", value: 36 },
-    { country: "Yemen", value: 20 },
-    { country: "Palestine", value: 33 },
-    { country: "Iraq", value: 9 },
-    { country: "Morocco", value: 3 },
-    { country: "Algeria", value: 5 },
-    { country: "Tunisia", value: 5 },
-  ];
-
   return (
     <section
       id="statistics"
-      className="relative overflow-hidden bg-background py-20 lg:py-32"
+      className="relative flex flex-col items-center justify-center min-h-[50vh] w-full bg-background overflow-hidden px-4 gap-12 mb-64"
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+        maskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        maskRepeat: "no-repeat",
+        maskSize: "100% 100%",
+      }}
     >
-      {/* Light-mode soft gradients */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 dark:hidden blur-2xl"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(38vw 38vh at 14% 22%, oklch(0.62 0.21 300 / 0.08), transparent 60%), radial-gradient(42vw 38vh at 86% 88%, oklch(0.7 0.15 190 / 0.08), transparent 60%)",
-        }}
-      />
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          className="mx-auto max-w-2xl text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            {t("statistics.title")}
-          </h2>
-          <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
-            {t("statistics.description")}
-          </p>
-        </motion.div>
+      <div className="w-full max-w-2xl mx-auto pt-12 mb-10">
+        <ScrollReveal align="center" size="xl" variant="default">
+          {t("statistics.title")}
+        </ScrollReveal>
+        <ScrollReveal align="center" size="sm" variant="muted">
+          {t("statistics.description")}
+        </ScrollReveal>
+      </div>
+      <div className="flex flex-col md:flex-row gap-12 w-full max-w-4xl items-center justify-center">
+        {stats.map((stat, idx) => (
+          <div
+            key={stat.label}
+            className="relative w-[95vw] max-w-xs p-0 group flex flex-col items-center justify-center"
+          >
+            {" "}
+            <div className="relative z-20 rounded-xl bg-white/5 dark:bg-card/10 px-10 py-10 border border-transparent text-center backdrop-blur-lg md:backdrop-blur-xl flex flex-col items-center gap-4 w-full shadow-md">
+              <BorderBeam
+                size={72}
+                duration={8}
+                delay={idx * 0.4}
+                colorFrom={stat.colorFrom}
+                colorTo={stat.colorTo}
+                glowIntensity={12}
+                opacity={0.3}
+                borderThickness={2}
+                beamBorderRadius={20}
+                className="z-10 pointer-events-none"
+              />
 
-        {/* Overview Statistics - Funnel Chart Style */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-center mb-8">
-            {t("statistics.overview.title")}
-          </h3>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {overviewStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Card className="p-6 text-center border-border bg-card hover:shadow-lg transition-all">
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    {stat.value.toLocaleString()}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+              <CountUp
+                value={stat.value}
+                duration={2}
+                className="text-6xl md:text-7xl font-extrabold text-primary"
+                colorScheme="gradient"
+                animationStyle="spring"
+                separator=","
+                interactive={true}
+              />
+              <span className="block text-lg font-semibold tracking-wide text-foreground/80">
+                {stat.label}
+              </span>
+            </div>
           </div>
-        </motion.div>
-
-        {/* Phase 2 Statistics */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-center mb-8">
-            {t("statistics.phase2.title")}
-          </h3>
-          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all">
-                <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
-                <div className="text-4xl font-bold text-primary mb-2">150</div>
-                <div className="text-sm text-muted-foreground">
-                  {t("statistics.phase2.english_exam")}
-                </div>
-              </Card>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all">
-                <Brain className="w-12 h-12 text-primary mx-auto mb-4" />
-                <div className="text-4xl font-bold text-primary mb-2">170</div>
-                <div className="text-sm text-muted-foreground">
-                  {t("statistics.phase2.iq_exam")}
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Phase 3 Statistics */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-center mb-8">
-            {t("statistics.phase3.title")}
-          </h3>
-          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all">
-                <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                <div className="text-4xl font-bold text-primary mb-2">262</div>
-                <div className="text-sm text-muted-foreground">
-                  {t("statistics.phase3.interviews")}
-                </div>
-              </Card>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all">
-                <User className="w-12 h-12 text-primary mx-auto mb-4" />
-                <div className="text-4xl font-bold text-primary mb-2">20</div>
-                <div className="text-sm text-muted-foreground">
-                  {t("statistics.phase3.interviewers")}
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Phase 4 Statistics */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-center mb-8">
-            {t("statistics.phase4.title")}
-          </h3>
-          <div className="max-w-2xl mx-auto">
-            <Card className="p-8 text-center border-border bg-card hover:shadow-lg transition-all mb-6">
-              <div className="text-4xl font-bold text-primary mb-2">60</div>
-              <div className="text-sm text-muted-foreground mb-6">
-                {t("statistics.phase4.current_candidates")}
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-1">59</div>
-                  <div className="text-xs text-muted-foreground">
-                    {t("statistics.phase4.libyan")}
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-1">1</div>
-                  <div className="text-xs text-muted-foreground">
-                    {t("statistics.phase4.palestinian")}
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </motion.div>
-
-        {/* Geographic Distribution */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-center mb-8">
-            {t("statistics.geographic.title")}
-          </h3>
-          <div className="mt-8">
-            <GeographicMap data={geographicData} />
-          </div>
-        </motion.div>
+        ))}
       </div>
     </section>
   );

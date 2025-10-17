@@ -1,6 +1,7 @@
 {
   "navigation": {
     "motivation": "التحفيز",
+    "program": "البرنامج",
     "tracks": "المسارات",
     "phases": "المراحل",
     "statistics": "الإحصائيات",
@@ -121,6 +122,10 @@
       "current_candidates": "المرشحون الحاليون",
       "libyan": "ليبيون",
       "palestinian": "فلسطيني"
+    },
+    "geographicGlobe": {
+      "title": "مواهب عالمية لأثر محلي",
+      "subtitle": "متقدمون من مختلف أنحاء المنطقة"
     },
     "geographic": {
       "title": "التوزيع الجغرافي",

@@ -4,6 +4,9 @@ import { Card } from "@/components/ui/card";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "@/hooks/use-translations";
 import { useRef } from "react";
+import Image from "next/image";
+import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
+import { BorderBeam } from "@/src/components/lightswind/border-beam";
 
 function Chip({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -47,99 +50,103 @@ export function TargetsAndGoal() {
   return (
     <section
       id="targets"
-      className="relative overflow-hidden bg-muted py-20 lg:py-32"
+      className="relative flex flex-col items-center justify-center min-h-[100vh] h-[100dvh] w-full overflow-hidden p-0 z-0"
     >
-      {/* Light-mode soft gradients */}
+      {/* Dark gradient overlay at the top */}
       <div
-        className="pointer-events-none absolute inset-0 z-0 dark:hidden blur-2xl"
-        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 right-0 z-20"
         style={{
+          height: "160px", // adjust as needed for the fade
           background:
-            "radial-gradient(40vw 40vh at 8% 15%, oklch(0.62 0.21 300 / 0.12), transparent 60%), radial-gradient(45vw 40vh at 92% 85%, oklch(0.7 0.15 190 / 0.1), transparent 60%)",
+            "linear-gradient(to bottom, rgba(4,4,9,0.96) 0%, rgba(4,4,9,0.75) 40%, rgba(4,4,9,0.0) 100%)",
         }}
       />
-      {/* subtle square background accents (dark mode only) */}
-      <div className="pointer-events-none absolute -bottom-6 left-0 right-0 hidden select-none grid-cols-12 gap-6 opacity-10 dark:grid">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="h-6 bg-[rgba(42,39,80,0.5)]" />
-        ))}
+      {/* Cropped hero background with dark gradient overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ height: "100vh", maxHeight: "100vh", top: 0 }}
+      >
+        <Image
+          src="/assets/stock-background.jpeg"
+          alt="TGP Hero Background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          priority
+          className="w-full h-full opacity-80"
+          draggable={false}
+        />
+        {/* Heavy theme-matching gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(14,14,29,0.89) 0%, rgba(28,26,52,0.82) 55%, rgba(18,18,38,0.95) 100%)",
+          }}
+        />
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          className="mx-auto max-w-3xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
+      {/* Split layout: Cards left, Title right (like Motivation, but mirrored) */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 lg:px-8 gap-12 flex flex-col md:flex-row items-center justify-center">
+        {/* Cards - Left */}
+        <div className="flex-1 flex flex-col gap-8 w-full max-w-lg">
+          {[
+            {
+              title: "Hands-On Learning",
+              content:
+                "Develop real skills by working on practical, real-world projects.",
+            },
+            {
+              title: "Expert Mentorship",
+              content:
+                "Receive personal guidance and feedback from industry professionals.",
+            },
+            {
+              title: "Widely Applicable Skills",
+              content:
+                "Build communication, problem-solving, and digital skills for any field.",
+            },
+          ].map((card, idx) => (
+            <article
+              key={card.title}
+              style={{
+                backdropFilter: "blur(16px)",
+                background: "none",
+                // border: "1px solid rgba(255, 255, 255, 0.13)",
+                borderRadius: "16px",
+                boxShadow: "0 4px 32px rgba(0,0,0,0.13)",
+                padding: "2rem",
+                color: "white",
+                WebkitBackdropFilter: "blur(16px)",
+                transition: "box-shadow .25s, border .25s",
+              }}
+              className="hover:shadow-2xl hover:border-primary/60"
+            >
+              <BorderBeam
+                size={60}
+                duration={7}
+                delay={idx === 0 ? 0 : idx === 1 ? 0.5 : 1}
+                colorFrom="#884aff"
+                colorTo="#41b8ff"
+                glowIntensity={10}
+                opacity={0.5}
+                borderThickness={2}
+                beamBorderRadius={20}
+                className="z-0"
+              />
+              <h2 className="text-lg font-bold mb-2 text-card-foreground">
+                {card.title}
+              </h2>
+              <p className="text-base text-muted-foreground dark:text-foreground/80">
+                {card.content}
+              </p>
+            </article>
+          ))}
+        </div>
+        {/* Title - Right */}
+        <div className="flex-1 w-full max-w-xl pt-20 flex flex-col justify-center items-end md:items-end">
+          <ScrollReveal size="xl" align="right" variant="default">
             {t("targets.title")}
-          </h2>
-          <p className="text-pretty text-lg leading-relaxed text-muted-foreground">
-            {t("targets.description")}
-          </p>
-        </motion.div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -6 }}
-          >
-            <Card className="group h-full rounded-2xl border border-secondary/30 bg-gradient-to-b from-card to-secondary/5 p-8 shadow-sm transition-all hover:border-secondary/60 hover:shadow-md">
-              <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
-                {t("targets.target.title")}
-              </h3>
-              <p className="text-muted-foreground dark:text-foreground/80">
-                {t("targets.target.description")}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2 text-sm">
-                {[
-                  t("targets.target.traits.0"),
-                  t("targets.target.traits.1"),
-                  t("targets.target.traits.2"),
-                  t("targets.target.traits.3"),
-                ].map((chip) => (
-                  <Chip key={chip}>{chip}</Chip>
-                ))}
-              </div>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ y: -6 }}
-          >
-            <Card className="group h-full rounded-2xl border border-accent/25 bg-white/60 p-8 shadow-sm backdrop-blur-sm transition-all dark:border-accent/30 dark:bg-white/5 hover:shadow-md">
-              <h3 className="mb-3 text-2xl font-semibold text-card-foreground">
-                {t("targets.goal.title")}
-              </h3>
-              <p className="text-muted-foreground dark:text-foreground/80">
-                {t("targets.goal.description")}
-              </p>
-              <div className="mt-5 grid grid-cols-2 gap-2 text-sm">
-                {[
-                  t("targets.goal.outcomes.0"),
-                  t("targets.goal.outcomes.1"),
-                  t("targets.goal.outcomes.2"),
-                  t("targets.goal.outcomes.3"),
-                ].map((item) => (
-                  <motion.div
-                    key={item}
-                    className="rounded-lg border border-border/70 bg-background/70 px-3 py-2 backdrop-blur-[1px]"
-                    whileHover={{ scale: 1.03 }}
-                  >
-                    {item}
-                  </motion.div>
-                ))}
-              </div>
-            </Card>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

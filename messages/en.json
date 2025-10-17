@@ -1,6 +1,7 @@
 {
   "navigation": {
     "motivation": "Motivation",
+    "program": "The Program",
     "tracks": "Tracks",
     "phases": "Phases",
     "statistics": "Statistics",
@@ -30,10 +31,10 @@
     }
   },
   "targets": {
-    "title": "Who We Serve",
+    "title": "What We Provide",
     "description": "A tight community of motivated learners and ambitious organizations.",
     "target": {
-      "title": "Who We Target",
+      "title": "What We Provide",
       "description": "Ambitious students and graduates (born 1999+) in fields intersecting with technology, data, and innovation.",
       "traits": ["AI-curious", "Builder mindset", "Team player", "Learns fast"]
     },
@@ -131,6 +132,10 @@
       "morocco": "Morocco",
       "algeria": "Algeria",
       "tunisia": "Tunisia"
+    },
+    "geographicGlobe": {
+      "title": "Global Talent, Local Impact",
+      "subtitle": "Applicants from across the MENA region"
     }
   },
   "partners": {

@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useTranslations } from "@/hooks/use-translations";
 import { cn } from "@/lib/utils";
+import { ScrollTimeline } from "../src/components/lightswind/scroll-timeline";
+import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
 
 function PhaseCard({ p, i }: { p: any; i: number }) {
   const t = useTranslations();
@@ -61,69 +63,62 @@ function PhaseCard({ p, i }: { p: any; i: number }) {
 
 export function Phases() {
   const t = useTranslations();
-
   const phases = [
     {
+      year: t("phases.step") + " 1",
       title: t("phases.application.title"),
-      body: t("phases.application.description"),
+      description: t("phases.application.description"),
     },
     {
+      year: t("phases.step") + " 2",
       title: t("phases.examination.title"),
-      body: t("phases.examination.description"),
+      description: t("phases.examination.description"),
     },
     {
+      year: t("phases.step") + " 3",
       title: t("phases.interview.title"),
-      body: t("phases.interview.description"),
+      description: t("phases.interview.description"),
     },
     {
+      year: t("phases.step") + " 4",
       title: t("phases.training.title"),
-      body: t("phases.training.description"),
+      description: t("phases.training.description"),
     },
     {
+      year: t("phases.step") + " 5",
       title: t("phases.selection.title"),
-      body: t("phases.selection.description"),
+      description: t("phases.selection.description"),
     },
   ];
   return (
     <section
       id="phases"
-      className="relative overflow-hidden bg-muted py-20 lg:py-32"
+      className="relative flex flex-col items-center justify-center min-h-[100vh] w-full bg-[#040409] p-0 overflow-hidden"
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%)",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+        maskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%)",
+        maskRepeat: "no-repeat",
+        maskSize: "100% 100%",
+      }}
     >
-      {/* Light-mode soft gradients */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 dark:hidden blur-2xl"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(38vw 38vh at 12% 20%, oklch(0.62 0.21 300 / 0.1), transparent 60%), radial-gradient(42vw 38vh at 88% 90%, oklch(0.7 0.15 190 / 0.09), transparent 60%)",
-        }}
-      />
-      {/* square motif (dark mode only) */}
-      <div className="pointer-events-none absolute inset-x-0 -bottom-8 hidden select-none grid-cols-12 gap-6 opacity-10 dark:grid">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="h-6 bg-[rgba(42,39,80,0.5)]" />
-        ))}
-      </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
-            {t("phases.title")}
-          </h2>
-          <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
-            {t("phases.description")}
-          </p>
-        </motion.div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-          {phases.map((p, i) => (
-            <PhaseCard key={p.title} p={p} i={i} />
-          ))}
+      <div className="w-full max-w-8xl mx-auto px-6 py-0 flex flex-col items-center justify-center">
+        <div className="w-full mt-16 max-w-5xl mx-auto">
+          <ScrollTimeline
+            events={phases}
+            title={t("phases.title")}
+            subtitle={t("phases.description")}
+            progressIndicator={true}
+            cardAlignment="alternating"
+            revealAnimation="fade"
+            dateFormat="badge"
+            darkMode={true}
+            parallaxIntensity={0.22}
+            animationOrder="staggered"
+          />
         </div>
       </div>
     </section>

@@ -48,10 +48,10 @@ export function Navigation() {
   useEffect(() => {
     const sections = [
       "#motivation",
+      "#targets",
       "#tracks",
       "#phases",
       "#statistics",
-      "#partners",
       "#contact",
     ];
 
@@ -104,15 +104,15 @@ export function Navigation() {
           : "border-b-0 bg-transparent backdrop-blur-none"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-0 lg:px-0 py-3">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
               src={theme === "dark" ? "/logo-light.svg" : "/Logo2.png"}
               alt="TGP2025 Logo"
-              width={240}
-              height={64}
-              className="h-8 w-auto"
+              width={320}
+              height={96}
+              className="h-12 w-auto"
             />
           </div>
 
@@ -130,6 +130,27 @@ export function Navigation() {
             >
               {t("navigation.motivation")}
               {activeSection === "#motivation" && (
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
+                  layoutId="activeIndicator"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.a>
+            <motion.a
+              href="#targets"
+              onClick={(e) => handleSmoothScroll(e, "#targets")}
+              className={`text-sm transition-colors hover:text-secondary relative ${
+                activeSection === "#targets"
+                  ? "text-secondary font-medium"
+                  : "text-muted-foreground"
+              }`}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              {t("navigation.program")}
+              {activeSection === "#targets" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
                   layoutId="activeIndicator"
@@ -193,27 +214,6 @@ export function Navigation() {
             >
               {t("navigation.statistics")}
               {activeSection === "#statistics" && (
-                <motion.div
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
-                  layoutId="activeIndicator"
-                  initial={false}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </motion.a>
-            <motion.a
-              href="#partners"
-              onClick={(e) => handleSmoothScroll(e, "#partners")}
-              className={`text-sm transition-colors hover:text-secondary relative ${
-                activeSection === "#partners"
-                  ? "text-secondary font-medium"
-                  : "text-muted-foreground"
-              }`}
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              {t("navigation.partners")}
-              {activeSection === "#partners" && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary"
                   layoutId="activeIndicator"
@@ -296,6 +296,15 @@ export function Navigation() {
                   </SheetClose>
                   <SheetClose asChild>
                     <a
+                      href="#targets"
+                      onClick={(e) => handleSmoothScroll(e, "#targets")}
+                      className="text-foreground hover:text-secondary"
+                    >
+                      {t("navigation.program")}
+                    </a>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <a
                       href="#tracks"
                       onClick={(e) => handleSmoothScroll(e, "#tracks")}
                       className="text-foreground hover:text-secondary"
@@ -319,15 +328,6 @@ export function Navigation() {
                       className="text-foreground hover:text-secondary"
                     >
                       {t("navigation.statistics")}
-                    </a>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <a
-                      href="#partners"
-                      onClick={(e) => handleSmoothScroll(e, "#partners")}
-                      className="text-foreground hover:text-secondary"
-                    >
-                      {t("navigation.partners")}
                     </a>
                   </SheetClose>
                   <SheetClose asChild>

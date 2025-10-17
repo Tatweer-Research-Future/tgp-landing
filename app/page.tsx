@@ -6,7 +6,7 @@ import { TargetsAndGoal } from "@/components/targets";
 import { Tracks } from "@/components/tracks";
 import { Phases } from "@/components/phases";
 import { Statistics } from "@/components/statistics";
-import { Partners } from "@/components/partners";
+import GlobeDistribution from "../components/globe-distribution";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       <Tracks />
       <Phases />
       <Statistics />
-      <Partners />
+      <GlobeDistribution />
       <Contact />
     </main>
   );

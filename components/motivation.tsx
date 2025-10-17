@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "@/hooks/use-translations";
 import { useRef } from "react";
+import { BorderBeam } from "../src/components/lightswind/border-beam";
+import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
 
 export function Motivation() {
   const t = useTranslations();
@@ -31,70 +33,56 @@ export function Motivation() {
     <section
       id="motivation"
       ref={ref}
-      onMouseMove={handleMouseMove}
-      className="relative overflow-hidden bg-background py-20 lg:py-32"
+      className="relative overflow-hidden flex flex-col items-center justify-center min-h-[100vh] w-full bg-[#040409] p-0"
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+        maskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        maskRepeat: "no-repeat",
+        maskSize: "100% 100%",
+      }}
     >
-      {/* Decorative orbs */}
-      <motion.div
-        className="pointer-events-none absolute -top-10 -left-10 h-72 w-72 rounded-full bg-secondary/20 blur-3xl"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.4, 0.25] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
-      <motion.div
-        className="pointer-events-none absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl"
-        animate={{ scale: [1.1, 0.95, 1.1], opacity: [0.25, 0.4, 0.25] }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
-      <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
-        <motion.div
-          className="mx-auto max-w-5xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-10 text-3xl font-bold tracking-tight text-foreground lg:mb-12 lg:text-5xl">
+      <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto px-4 lg:px-8 gap-12 items-center justify-center">
+        <div className="flex-1 w-full max-w-xl pt-20 flex flex-col justify-center items-center">
+          <ScrollReveal size="xl" align="left" variant="default">
             {t("motivation.title")}
-          </h2>
-          <div className="grid gap-6 text-left lg:grid-cols-3">
-            <motion.div
-              style={{ x: card1X, y: card1Y }}
-              className="rounded-xl border border-border bg-card p-6"
-              whileHover={{ y: -6 }}
-            >
-              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                {t("motivation.motivation.title")}
-              </h3>
-              <p className="text-muted-foreground">
-                {t("motivation.motivation.description")}
-              </p>
-            </motion.div>
-            <motion.div
-              style={{ x: card2X, y: card2Y }}
-              className="rounded-xl border border-border bg-card p-6"
-              whileHover={{ y: -6 }}
-            >
-              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                {t("motivation.market.title")}
-              </h3>
-              <p className="text-muted-foreground">
-                {t("motivation.market.description")}
-              </p>
-            </motion.div>
-            <motion.div
-              style={{ x: card3X, y: card3Y }}
-              className="rounded-xl border border-border bg-card p-6"
-              whileHover={{ y: -6 }}
-            >
-              <h3 className="mb-2 text-xl font-semibold text-card-foreground">
-                {t("motivation.bridge.title")}
-              </h3>
-              <p className="text-muted-foreground">
-                {t("motivation.bridge.description")}
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
+          </ScrollReveal>
+        </div>
+        <div className="flex-1 flex flex-col gap-12 w-full max-w-lg">
+          {[
+            "motivation.motivation",
+            "motivation.market",
+            "motivation.bridge",
+          ].map((key, idx) => (
+            <div key={key} className="relative w-full">
+              {" "}
+              <div className="relative z-10 rounded-xl bg-white/5 dark:bg-card/10 px-7 py-8 md:px-9 border border-transparent text-left backdrop-blur-lg md:backdrop-blur-xl">
+                <BorderBeam
+                  size={60}
+                  duration={7}
+                  delay={idx === 0 ? 0 : idx === 1 ? 0.5 : 1}
+                  colorFrom="#884aff"
+                  colorTo="#41b8ff"
+                  glowIntensity={10}
+                  opacity={0.5}
+                  borderThickness={2}
+                  beamBorderRadius={20}
+                  className="z-0"
+                />
+
+                <h3 className="mb-2 text-xl font-semibold text-card-foreground text-left">
+                  {t(`${key}.title`)}
+                </h3>
+                <p className="text-muted-foreground text-left">
+                  {t(`${key}.description`)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

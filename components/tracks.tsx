@@ -5,6 +5,12 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Brain, Code2, Shield } from "lucide-react";
 import { useTranslations } from "@/hooks/use-translations";
 import { useRef } from "react";
+import {
+  GlowingCards,
+  GlowingCard,
+} from "../src/components/lightswind/glowing-cards";
+import { Zap, Sparkles, Crown } from "lucide-react";
+import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
 
 function TrackCard({ track, i }: { track: any; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -71,68 +77,84 @@ export function Tracks() {
     {
       title: t("tracks.ai.title"),
       description: t("tracks.ai.description"),
-      accent: "secondary",
-      icon: Brain,
+      glowColor: "#10b981",
+      icon: Brain, // AI
+      iconStyle: "w-8 h-8",
     },
     {
       title: t("tracks.development.title"),
       description: t("tracks.development.description"),
-      accent: "accent",
-      icon: Code2,
+      glowColor: "#8b5cf6",
+
+      icon: Code2, // Software/dev
+      iconStyle: "w-8 h-8",
     },
     {
       title: t("tracks.cybersecurity.title"),
       description: t("tracks.cybersecurity.description"),
-      accent: "secondary",
-      icon: Shield,
+      glowColor: "#f59e0b",
+      icon: Shield, // Cybersecurity
+      iconStyle: "w-10 h-10 p-1",
     },
   ];
   return (
     <section
       id="tracks"
-      className="relative overflow-hidden bg-background py-20 lg:py-32"
-      style={{ perspective: 1200 }}
+      className="relative flex flex-col items-center justify-center min-h-[80vh] w-full bg-[#040409] py-24 overflow-hidden"
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+        maskImage:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+        maskRepeat: "no-repeat",
+        maskSize: "100% 100%",
+      }}
     >
-      {/* Light-mode soft gradients */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 dark:hidden blur-2xl"
-        aria-hidden
-        style={{
-          background:
-            "radial-gradient(36vw 36vh at 10% 18%, oklch(0.62 0.21 300 / 0.08), transparent 60%), radial-gradient(40vw 36vh at 90% 88%, oklch(0.7 0.15 190 / 0.08), transparent 60%)",
-        }}
-      />
-      <motion.div
-        className="pointer-events-none absolute left-1/4 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-secondary/20 blur-3xl"
-        animate={{ y: [0, 20, 0], opacity: [0.3, 0.45, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="pointer-events-none absolute bottom-0 right-1/4 h-40 w-40 translate-x-1/2 rounded-full bg-accent/20 blur-3xl"
-        animate={{ y: [0, -20, 0], opacity: [0.3, 0.45, 0.3] }}
-        transition={{ duration: 9, repeat: Infinity }}
-      />
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground lg:text-5xl">
+      <div className="w-full max-w-8xl mx-auto px-6 py-6 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center gap-0 mb-2">
+          <ScrollReveal size="xl" align="center" variant="default">
             {t("tracks.title")}
-          </h2>
-          <p className="text-pretty text-lg leading-relaxed text-muted-foreground dark:text-foreground/80">
+          </ScrollReveal>
+          <ScrollReveal size="sm" align="center" variant="muted">
             {t("tracks.description")}
-          </p>
-        </motion.div>
-
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {tracks.map((t, i) => (
-            <TrackCard key={t.title} track={t} i={i} />
-          ))}
+          </ScrollReveal>
         </div>
+        <GlowingCards
+          enableGlow
+          glowRadius={30}
+          glowOpacity={0.6}
+          animationDuration={600}
+          gap="2.5rem"
+          responsive
+          className="mt-16"
+          backgroundColor="transparent"
+        >
+          {tracks.map((track, idx) => (
+            <GlowingCard
+              key={track.title as string}
+              glowColor={track.glowColor}
+              className="space-y-3 flex flex-col items-center py-8 w-[350px] h-[350px]"
+            >
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-xl mb-3"
+                style={{ backgroundColor: track.glowColor + "22" }}
+              >
+                <track.icon
+                  className="w-8 h-8"
+                  style={{ color: track.glowColor }}
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-card-foreground text-center">
+                {track.title}
+              </h3>
+              <p className="text-muted-foreground text-center">
+                {track.description}
+              </p>
+            </GlowingCard>
+          ))}
+        </GlowingCards>
       </div>
     </section>
   );
