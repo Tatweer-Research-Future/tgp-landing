@@ -12,7 +12,6 @@ export function Contact() {
     { href: "#tracks", label: t("navigation.tracks") },
     { href: "#phases", label: t("navigation.phases") },
     { href: "#statistics", label: t("navigation.statistics") },
-    { href: "#partners", label: t("navigation.partners") },
     { href: "#contact", label: t("navigation.contact") },
   ];
 
