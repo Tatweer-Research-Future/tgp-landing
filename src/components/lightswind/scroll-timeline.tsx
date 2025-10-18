@@ -186,7 +186,7 @@ export const ScrollTimeline = ({
 
   const getCardClasses = (index: number) => {
     const baseClasses =
-      "relative z-30 rounded-xl transition-all duration-300 border border-white/10 bg-transparent"; // fully transparent, barely-there border
+      "relative z-30 rounded-xl transition-all duration-300 border border-white/10 bg-transparent sm:bg-[#040409] sm:z-[99]"; // on mobile: match #040409 bg, z-99
     // No bg-card or shadow for image look
     return cn(baseClasses, "w-full lg:w-[calc(50%-40px)]");
   };
@@ -351,7 +351,7 @@ export const ScrollTimeline = ({
                     viewport={{ once: false, margin: "-100px" }}
                     style={parallaxIntensity > 0 ? { y: yOffset } : undefined}
                   >
-                    <Card className="border-0 bg-transparent p-8 rounded-xl">
+                    <Card className="border-0 md:bg-transparent p-8 rounded-xl bg-[#040409] sm:z-[99]">
                       <CardContent className="p-0">
                         {/* Year/step row: no calendar icon, bold white */}
                         <div className="mb-2">

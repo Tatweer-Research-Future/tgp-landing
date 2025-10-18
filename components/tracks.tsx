@@ -135,7 +135,7 @@ export function Tracks() {
             <GlowingCard
               key={track.title as string}
               glowColor={track.glowColor}
-              className="space-y-3 flex flex-col items-center py-8 w-[350px] h-[350px]"
+              className="space-y-3 flex flex-col items-center py-8 w-full h-full md:w-[350px] md:h-[350px]"
             >
               <div
                 className="flex items-center justify-center w-14 h-14 rounded-xl mb-3"

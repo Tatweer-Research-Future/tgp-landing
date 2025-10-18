@@ -86,7 +86,7 @@ export function TargetsAndGoal() {
         />
       </div>
       {/* Split layout: Cards left, Title right (like Motivation, but mirrored) */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 lg:px-8 gap-12 flex flex-col md:flex-row items-center justify-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 lg:px-8 gap-12 flex flex-col-reverse md:flex-row items-center justify-center">
         {/* Cards - Left */}
         <div className="flex-1 flex flex-col gap-8 w-full max-w-lg">
           {[
@@ -143,7 +143,7 @@ export function TargetsAndGoal() {
           ))}
         </div>
         {/* Title - Right */}
-        <div className="flex-1 w-full max-w-xl pt-20 flex flex-col justify-center items-end md:items-end">
+        <div className="flex-1 w-full max-w-xl pt-20 flex flex-col justify-center items-start md:items-end">
           <ScrollReveal size="xl" align="right" variant="default">
             {t("targets.title")}
           </ScrollReveal>

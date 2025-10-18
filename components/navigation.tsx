@@ -61,7 +61,6 @@ export function Navigation() {
       // Check if scrolled past a threshold (e.g., 50px)
       const scrolled = scrollPosition > 50;
       setIsScrolled(scrolled);
-      console.log("Scroll position:", scrollPosition, "Is scrolled:", scrolled);
 
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -104,7 +103,7 @@ export function Navigation() {
           : "border-b-0 bg-transparent backdrop-blur-none"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-0 lg:px-0 py-3">
+      <div className="mx-auto max-w-7xl px-2 lg:px-0 py-3">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
