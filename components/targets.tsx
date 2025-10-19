@@ -67,7 +67,7 @@ export function TargetsAndGoal() {
         style={{ height: "100vh", maxHeight: "100vh", top: 0 }}
       >
         <Image
-          src="/assets/stock-background.jpeg"
+          src="/assets/stock-background.JPG"
           alt="TGP Hero Background"
           layout="fill"
           objectFit="cover"
