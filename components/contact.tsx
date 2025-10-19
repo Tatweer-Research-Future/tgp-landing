@@ -17,7 +17,7 @@ export function Contact() {
 
   return (
     <footer
-      id="footer"
+      id="contact"
       className="bg-[#040409] border-0 pt-24 pb-24 text-white relative"
       style={{
         WebkitMaskImage:
@@ -99,7 +99,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="hover:text-primary transition text-left"
             >
-              future-tech.ly/tgp2025
+              https://home.tgp25.ly/
             </a>
           </div>
         </div>

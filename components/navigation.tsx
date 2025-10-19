@@ -32,6 +32,8 @@ export function Navigation() {
     target: string
   ) => {
     e.preventDefault();
+    // Set active immediately so the underline shows on click
+    setActiveSection(target);
     const element = document.querySelector(target);
     if (element) {
       const offset = 80; // Offset for fixed header

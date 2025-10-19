@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "TGP2025 – Training Graduate Program",
     description:
       "A Future Company program focused on training final-year students and fresh graduates to launch their careers in technology.",
-    url: "https://future-tech.ly/tgp2025",
+    url: "https://home.tgp25.ly/",
     images: [
       {
         url: "/Logo.png",
