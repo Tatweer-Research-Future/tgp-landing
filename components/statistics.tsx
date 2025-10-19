@@ -41,18 +41,47 @@ export function Statistics() {
   return (
     <section
       id="statistics"
-      className="relative flex flex-col items-center justify-center min-h-[50vh] w-full bg-background overflow-hidden px-4 gap-12 mb-64"
+      className="relative flex flex-col items-center justify-center min-h-[80vh] w-full bg-background overflow-hidden px-4 py-24 gap-12"
       style={{
         WebkitMaskImage:
-          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 2%, rgba(0,0,0,1) 100%)",
         WebkitMaskRepeat: "no-repeat",
         WebkitMaskSize: "100% 100%",
         maskImage:
-          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 2%, rgba(0,0,0,1) 100%)",
         maskRepeat: "no-repeat",
         maskSize: "100% 100%",
       }}
     >
+      {/* Dark gradient overlay at the top (match What We Provide) */}
+      <div
+        className="pointer-events-none absolute top-0 left-0 right-0 z-20"
+        style={{
+          height: "72px",
+          background:
+            "linear-gradient(to bottom, rgba(4,4,9,0.45) 0%, rgba(4,4,9,0.00) 100%)",
+        }}
+      />
+      {/* Background video with heavy gradient overlay (match What We Provide) */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <video
+          className="w-full h-full object-cover opacity-80"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ objectPosition: "center 15%" }}
+        >
+          <source src="/assets/Video.webm" type="video/webm" />
+        </video>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(14,14,29,0.50) 0%, rgba(28,26,52,0.45) 55%, rgba(18,18,38,0.80) 100%)",
+          }}
+        />
+      </div>
       <div className="w-full max-w-2xl mx-auto pt-12 mb-10">
         <ScrollReveal align="center" size="xl" variant="default">
           {t("statistics.title")}

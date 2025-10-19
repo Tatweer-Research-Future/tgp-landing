@@ -41,7 +41,7 @@ export function GlobeDistribution() {
   return (
     <section
       id="geographic-globe"
-      className="relative overflow-hidden flex flex-col items-center justify-center h-[100vh] pt-12 w-full bg-[#040409]"
+      className="relative overflow-hidden flex flex-col items-center justify-center min-h-[80vh] pt-12 w-full bg-[#040409]"
       style={{
         WebkitMaskImage:
           "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 100%)",
@@ -53,7 +53,7 @@ export function GlobeDistribution() {
         maskSize: "100% 100%",
       }}
     >
-      <div className="flex flex-col w-full max-w-6xl mx-auto px-4 lg:px-8 gap-4 pt-64 items-center justify-center">
+      <div className="flex flex-col w-full max-w-6xl mx-auto px-4 lg:px-8 gap-4 pt-32 items-center justify-center">
         <div className="flex-1 w-full max-w-xl pt-20 flex flex-col justify-center items-center">
           <ScrollReveal
             size="xl"
