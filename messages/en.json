@@ -33,6 +33,20 @@
   "targets": {
     "title": "What We Provide",
     "description": "A tight community of motivated learners and ambitious organizations.",
+    "cards": {
+      "hands_on": {
+        "title": "Hands-On Learning",
+        "content": "Develop real skills by working on practical, real-world projects."
+      },
+      "mentorship": {
+        "title": "Expert Mentorship",
+        "content": "Receive personal guidance and feedback from industry professionals."
+      },
+      "applicable_skills": {
+        "title": "Widely Applicable Skills",
+        "content": "Build communication, problem-solving, and digital skills for any field."
+      }
+    },
     "target": {
       "title": "What We Provide",
       "description": "Ambitious students and graduates (born 1999+) in fields intersecting with technology, data, and innovation.",

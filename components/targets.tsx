@@ -91,19 +91,16 @@ export function TargetsAndGoal() {
         <div className="flex-1 flex flex-col gap-8 w-full max-w-lg">
           {[
             {
-              title: "Hands-On Learning",
-              content:
-                "Develop real skills by working on practical, real-world projects.",
+              title: t("targets.cards.hands_on.title"),
+              content: t("targets.cards.hands_on.content"),
             },
             {
-              title: "Expert Mentorship",
-              content:
-                "Receive personal guidance and feedback from industry professionals.",
+              title: t("targets.cards.mentorship.title"),
+              content: t("targets.cards.mentorship.content"),
             },
             {
-              title: "Widely Applicable Skills",
-              content:
-                "Build communication, problem-solving, and digital skills for any field.",
+              title: t("targets.cards.applicable_skills.title"),
+              content: t("targets.cards.applicable_skills.content"),
             },
           ].map((card, idx) => (
             <article

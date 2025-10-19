@@ -5,9 +5,11 @@ import { useTranslations } from "@/hooks/use-translations";
 import { useRef } from "react";
 import { BorderBeam } from "../src/components/lightswind/border-beam";
 import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
+import { useLanguage } from "@/components/language-provider";
 
 export function Motivation() {
   const t = useTranslations();
+  const { language } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -59,7 +61,11 @@ export function Motivation() {
           ].map((key, idx) => (
             <div key={key} className="relative w-full">
               {" "}
-              <div className="relative z-10 rounded-xl bg-white/5 dark:bg-card/10 px-7 py-8 md:px-9 border border-transparent text-left backdrop-blur-lg md:backdrop-blur-xl">
+              <div
+                className={`relative z-10 rounded-xl bg-white/5 dark:bg-card/10 px-7 py-8 md:px-9 border border-transparent backdrop-blur-lg md:backdrop-blur-xl ${
+                  language === "ar" ? "text-right" : "text-left"
+                }`}
+              >
                 <BorderBeam
                   size={60}
                   duration={7}
@@ -73,10 +79,18 @@ export function Motivation() {
                   className="z-0"
                 />
 
-                <h3 className="mb-2 text-xl font-semibold text-card-foreground text-left">
+                <h3
+                  className={`mb-2 text-xl font-semibold text-card-foreground ${
+                    language === "ar" ? "text-right" : "text-left"
+                  }`}
+                >
                   {t(`${key}.title`)}
                 </h3>
-                <p className="text-muted-foreground text-left">
+                <p
+                  className={`text-muted-foreground ${
+                    language === "ar" ? "text-right" : "text-left"
+                  }`}
+                >
                   {t(`${key}.description`)}
                 </p>
               </div>

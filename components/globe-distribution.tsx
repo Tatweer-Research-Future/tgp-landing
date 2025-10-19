@@ -61,10 +61,10 @@ export function GlobeDistribution() {
             variant="default"
             textClassName=""
           >
-            Program Reach
+            {t("statistics.geographicGlobe.title")}
           </ScrollReveal>
           <ScrollReveal size="sm" align="center" variant="muted">
-            Applicants from across the MENA region
+            {t("statistics.geographicGlobe.subtitle")}
           </ScrollReveal>
         </div>
         <div className="flex-1 flex flex-col gap-12 w-full max-w-lg justify-center items-center">
