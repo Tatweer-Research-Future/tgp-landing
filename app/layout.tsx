@@ -3,13 +3,23 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Noto_Sans_Arabic } from "next/font/google";
 import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
+const montserrat = Montserrat({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const arabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "TGP2025 – Training Graduate Program",
@@ -42,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${GeistMono.variable} font-sans antialiased`}
+        className={`${montserrat.variable} ${arabic.variable} ${GeistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <LanguageProvider>
