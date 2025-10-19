@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "@/hooks/use-translations";
 import { useRef } from "react";
 import Image from "next/image";
+import bgImage from "@/public/assets/stock-background.jpg";
 import { ScrollReveal } from "../src/components/lightswind/scroll-reveal";
 import { BorderBeam } from "@/src/components/lightswind/border-beam";
 
@@ -67,13 +68,13 @@ export function TargetsAndGoal() {
         style={{ height: "100vh", maxHeight: "100vh", top: 0 }}
       >
         <Image
-          src="/assets/stock-background.JPG"
+          src={bgImage}
           alt="TGP Hero Background"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill
+          placeholder="blur"
           priority
-          className="w-full h-full opacity-80"
+          sizes="100vw"
+          className="w-full h-full object-cover object-center opacity-80"
           draggable={false}
         />
         {/* Heavy theme-matching gradient overlay */}
