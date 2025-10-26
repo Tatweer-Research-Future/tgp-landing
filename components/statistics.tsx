@@ -65,14 +65,24 @@ export function Statistics() {
       {/* Background video with heavy gradient overlay (match What We Provide) */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <video
-          className="w-full h-full object-cover opacity-80"
+          className="block md:hidden w-full h-full object-cover opacity-80"
           autoPlay
           loop
           muted
           playsInline
           style={{ objectPosition: "center 15%" }}
         >
-          <source src="/assets/Video.webm" type="video/webm" />
+          <source src="/assets/Video_Reel.webm" type="video/webm" />
+        </video>
+        <video
+          className="hidden md:block w-full h-full object-cover opacity-80"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ objectPosition: "center 15%" }}
+        >
+          <source src="/assets/Video_Landscape.webm" type="video/webm" />
         </video>
         <div
           className="absolute inset-0"
