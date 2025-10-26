@@ -33,22 +33,36 @@ export function Contact() {
       <div className="mx-auto max-w-7xl w-full flex flex-col md:flex-row gap-16 md:gap-0 px-6 lg:px-8">
         {/* Left: Logos */}
         <div className="w-full md:w-1/3 flex flex-col items-start gap-6 mb-10 md:mb-0">
-          <Image
-            src="/future-logo-white.png"
-            alt="Future Communications & IT"
-            width={120}
-            height={38}
-            className="object-contain max-w-[120px]"
-            priority
-          />
-          <Image
-            src="/Tatweer_Research_Logo_white.png"
-            alt="Tatweer Research Logo"
-            width={120}
-            height={60}
-            className="object-contain max-w-[120px]"
-            priority
-          />
+          <a
+            href="https://future-tech.ly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Future Communications & IT website"
+          >
+            <Image
+              src="/future-logo-white.png"
+              alt="Future Communications & IT"
+              width={120}
+              height={38}
+              className="object-contain max-w-[120px]"
+              priority
+            />
+          </a>
+          <a
+            href="https://tatweerresearch.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Tatweer Research website"
+          >
+            <Image
+              src="/Tatweer_Research_Logo_white.png"
+              alt="Tatweer Research Logo"
+              width={120}
+              height={60}
+              className="object-contain max-w-[120px]"
+              priority
+            />
+          </a>
         </div>
         {/* Center: Navigation */}
         <div className="w-full md:w-1/3 flex flex-col items-start gap-3 mb-10 md:mb-0">
